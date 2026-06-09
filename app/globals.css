@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent:        #c9913a;
+  --color-accent-dark:   #a5721f;
+  --color-accent-light:  #f5e6ce;
+  --color-bg:            #fafaf8;
+  --color-bg2:           #f3f0eb;
+  --color-bg3:           #1a1712;
+  --color-muted:         #6b6560;
+  --color-border:        #e2ddd7;
+
+  --font-fraunces: var(--font-fraunces);
+  --font-inter:    var(--font-inter);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fafaf8;
+  color: #1a1712;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hero radial gradient overlay */
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(201,145,58,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Scrollbar styling for the fotos carousel */
+.fotos-carousel::-webkit-scrollbar {
+  height: 4px;
+}
+.fotos-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.fotos-carousel::-webkit-scrollbar-thumb {
+  background: #c9913a;
+  border-radius: 4px;
+}
+
+/* FAQ arrow rotation */
+details[open] .faq-arrow {
+  transform: rotate(45deg);
+}
+
+/* Select option styling */
+.lead-select option {
+  background: #2a2620;
+  color: #ffffff;
+}

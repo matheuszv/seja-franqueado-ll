@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seja um Franqueado — Lembre-Lembre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #fafaf8;
+  --bg2:       #f3f0eb;
+  --bg3:       #1a1712;
+  --text:      #1a1712;
+  --muted:     #6b6560;
+  --accent:    #c9913a;
+  --accent-d:  #a5721f;
+  --accent-l:  #f5e6ce;
+  --white:     #ffffff;
+  --bdr:       #e2ddd7;
+  --r:         12px;
+  --max:       1120px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── TYPOGRAPHY ───────────────────────────────────────── */
+h1, h2, h3, .serif {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+/* ─── LAYOUT HELPERS ───────────────────────────────────── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+.section    { padding: 96px 0; }
+.section-sm { padding: 64px 0; }
+
+/* ─── NAV ──────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--bdr);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 28px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem; font-weight: 700; letter-spacing: -.03em;
+  color: var(--text); text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+.nav-cta {
+  background: var(--text); color: var(--white);
+  border: none; border-radius: 8px;
+  padding: 10px 22px; font-size: .85rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.nav-cta:hover { background: #333; transform: translateY(-1px); }
+
+/* ─── HERO ─────────────────────────────────────────────── */
+.hero {
+  background: var(--bg3);
+  color: var(--white);
+  padding: 110px 0 100px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(201,145,58,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: 1fr 460px; gap: 72px; align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,145,58,.15); border: 1px solid rgba(201,145,58,.35);
+  border-radius: 30px; padding: 5px 16px;
+  font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: #e8b86d; margin-bottom: 24px;
+}
+.hero-eyebrow::before { content: '✦'; font-size: .65rem; }
+.hero h1 {
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  color: var(--white); margin-bottom: 22px;
+  font-weight: 700;
+}
+.hero h1 em { font-style: italic; color: #e8b86d; }
+.hero-sub {
+  font-size: 1.05rem; color: rgba(255,255,255,.65);
+  max-width: 520px; line-height: 1.7; margin-bottom: 38px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent); color: var(--white);
+  border: none; border-radius: 10px;
+  padding: 16px 32px; font-size: .95rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--accent-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,145,58,.3); }
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,.75);
+  border: 1px solid rgba(255,255,255,.2); border-radius: 10px;
+  padding: 15px 26px; font-size: .95rem; font-weight: 500;
+  cursor: pointer; text-decoration: none;
+  transition: all .2s; display: inline-block;
+}
+.btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.06); }
+
+/* Hero stats */
+.hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-top: 48px;
+  padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1);
+}
+.hstat-n { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: #e8b86d; }
+.hstat-l { font-size: .75rem; color: rgba(255,255,255,.55); margin-top: 2px; text-transform: uppercase; letter-spacing: .06em; }
+
+/* Hero photo */
+.hero-photo-wrap { position: relative; }
+.hero-main-img {
+  width: 100%; border-radius: 20px; object-fit: cover;
+  aspect-ratio: 4/5; display: block;
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+}
+.hero-img-badge {
+  position: absolute; bottom: -16px; right: -16px;
+  background: var(--accent); color: var(--white);
+  border-radius: 14px; padding: 18px 22px; text-align: center;
+  box-shadow: 0 10px 28px rgba(201,145,58,.45);
+}
+.hero-img-badge .ab-n { font-family: 'Fraunces', serif; font-size: 1.7rem; font-weight: 700; line-height: 1; }
+.hero-img-badge .ab-l { font-size: .68rem; opacity: .85; margin-top: 4px; }
+.hero-img-pill {
+  position: absolute; top: 16px; left: 16px;
+  background: rgba(26,23,18,.82); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.14); color: var(--white);
+  border-radius: 30px; padding: 8px 16px;
+  font-size: .78rem; font-weight: 500;
+  display: flex; gap: 8px; align-items: center;
+}
+
+/* Hero investment card */
+.hero-invest-card {
+  margin-top: 32px;
+  background: rgba(201,145,58,.12); border: 1px solid rgba(201,145,58,.3);
+  border-radius: 12px; padding: 20px 28px;
+  display: inline-flex; align-items: center; gap: 16px;
+}
+.hero-invest-value {
+  font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: #e8b86d;
+}
+.hero-invest-label { font-size: .82rem; color: rgba(255,255,255,.6); line-height: 1.5; }
+.hero-invest-label span { color: rgba(255,255,255,.4); }
+
+/* ─── LOGOS / SOCIAL PROOF BAR ─────────────────────────── */
+.proof-bar {
+  background: var(--white); border-bottom: 1px solid var(--bdr);
+  padding: 22px 0;
+}
+.proof-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+  justify-content: center;
+}
+.proof-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; }
+.proof-pill {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .82rem; font-weight: 500; color: var(--muted);
+}
+.proof-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.proof-divider { width: 1px; height: 20px; background: var(--bdr); }
+
+/* ─── SECTION HEADER ───────────────────────────────────── */
+.sec-eyebrow {
+  display: inline-block;
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.sec-title { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: 18px; }
+.sec-sub { font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.75; }
+.center { text-align: center; }
+.center .sec-sub { margin: 0 auto; }
+
+/* ─── NUMBERS SECTION ──────────────────────────────────── */
+.numbers-section { background: var(--bg2); }
+.numbers-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  margin-top: 56px; border-radius: var(--r); overflow: hidden;
+  border: 1px solid var(--bdr);
+}
+.num-card {
+  background: var(--white); padding: 40px 32px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.num-value { font-family: 'Fraunces', serif; font-size: 2.8rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 10px; }
+.num-label { font-size: .82rem; color: var(--muted); line-height: 1.5; max-width: 140px; }
+
+/* ─── HOW IT WORKS (cards com foto) ────────────────────── */
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 56px;
+}
+.step-card {
+  border-radius: 20px; overflow: hidden;
+  background: var(--white); border: 1px solid var(--bdr);
+  transition: box-shadow .3s, transform .3s;
+}
+.step-card:hover { box-shadow: 0 20px 56px rgba(0,0,0,.09); transform: translateY(-6px); }
+.step-card-img {
+  width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block;
+  filter: brightness(.9);
+  transition: filter .3s;
+}
+.step-card:hover .step-card-img { filter: brightness(1); }
+.step-card-body { padding: 28px 28px 32px; }
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--accent-l); color: var(--accent);
+  font-family: 'Fraunces', serif; font-size: .95rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.step-card h3 { font-size: 1.05rem; margin-bottom: 10px; font-family: 'Fraunces', serif; }
+.step-card p  { font-size: .85rem; color: var(--muted); line-height: 1.7; }
+
+/* ─── BENEFITS ─────────────────────────────────────────── */
+.benefits-section { background: var(--bg3); color: var(--white); }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+  margin-top: 56px; border-radius: var(--r); overflow: hidden;
+}
+.benefit-item {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+  padding: 32px 36px;
+  display: flex; gap: 20px; align-items: flex-start;
+  transition: background .2s;
+}
+.benefit-item:hover { background: rgba(255,255,255,.07); }
+.benefit-icon {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(201,145,58,.15); border: 1px solid rgba(201,145,58,.25);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.benefit-item h4 { font-size: .92rem; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.benefit-item p  { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+/* ─── GALLERY STRIP ────────────────────────────────────── */
+.gallery-strip { overflow: hidden; background: var(--bg3); }
+.gallery-strip-inner {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+}
+.gallery-strip-inner img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+  transition: transform .5s ease; filter: brightness(.92);
+}
+.gallery-strip-inner img:hover { transform: scale(1.04); filter: brightness(1); }
+
+/* ─── FOTOS-LEMBRANÇA CAROUSEL ─────────────────────────── */
+.fotos-section { background: var(--bg2); }
+.fotos-carousel-wrap { position: relative; margin-top: 48px; }
+.fotos-carousel {
+  display: flex; gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg2);
+  cursor: grab;
+}
+.fotos-carousel:active { cursor: grabbing; }
+.fotos-carousel::-webkit-scrollbar { height: 4px; }
+.fotos-carousel::-webkit-scrollbar-track { background: transparent; }
+.fotos-carousel::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+.fotos-carousel img {
+  flex: 0 0 260px; height: 360px;
+  object-fit: cover; border-radius: var(--r);
+  scroll-snap-align: start;
+  transition: transform .35s ease, filter .3s;
+  filter: brightness(.88);
+  display: block;
+  user-select: none; -webkit-user-drag: none;
+}
+.fotos-carousel img:hover { transform: scale(1.03); filter: brightness(1); }
+
+/* ─── VIDEO TESTIMONIALS ───────────────────────────────── */
+.video-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  margin-top: 56px;
+}
+.video-card { border-radius: var(--r); overflow: hidden; background: #111; position: relative; }
+.video-card video {
+  width: 100%; aspect-ratio: 9/16; object-fit: cover;
+  display: block; cursor: pointer;
+}
+
+/* ─── ABOUT ────────────────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-image-wrap {
+  position: relative;
+}
+.about-real-img {
+  width: 100%; border-radius: 20px; object-fit: cover;
+  aspect-ratio: 3/4; display: block;
+  box-shadow: 0 20px 56px rgba(0,0,0,.1);
+}
+.about-badge {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--accent); color: var(--white);
+  border-radius: 16px; padding: 20px 24px; text-align: center;
+  box-shadow: 0 12px 32px rgba(201,145,58,.35);
+}
+.about-badge .ab-n { font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 700; }
+.about-badge .ab-l { font-size: .72rem; opacity: .85; margin-top: 2px; }
+.about-text .tag-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+.tag {
+  background: var(--accent-l); color: var(--accent-d);
+  font-size: .75rem; font-weight: 600; padding: 5px 14px; border-radius: 20px;
+}
+.about-text p { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+
+/* ─── TESTIMONIALS ─────────────────────────────────────── */
+.testimonials-section { background: var(--bg2); }
+
+/* ─── FORM SECTION ─────────────────────────────────────── */
+.form-section { background: var(--bg3); color: var(--white); }
+.form-wrap {
+  max-width: 640px; margin: 56px auto 0;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .07em; }
+.field input, .field select, .field textarea {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px; padding: 13px 16px;
+  font-size: .9rem; color: var(--white); font-family: 'Inter', sans-serif;
+  transition: border-color .2s, background .2s;
+  outline: none;
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.3); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent); background: rgba(255,255,255,.1);
+}
+.field select option { background: #2a2620; color: var(--white); }
+.field textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  margin-top: 24px; width: 100%;
+  background: var(--accent); color: var(--white);
+  border: none; border-radius: 10px;
+  padding: 18px; font-size: 1rem; font-weight: 600;
+  cursor: pointer; transition: background .2s, transform .15s;
+  font-family: 'Inter', sans-serif;
+}
+.form-submit:hover { background: var(--accent-d); transform: translateY(-2px); }
+.form-note { font-size: .75rem; color: rgba(255,255,255,.4); text-align: center; margin-top: 14px; }
+
+/* ─── FAQ ──────────────────────────────────────────────── */
+.faq-list { max-width: 720px; margin: 48px auto 0; }
+.faq-item {
+  border-bottom: 1px solid var(--bdr); padding: 24px 0;
+  cursor: pointer;
+}
+.faq-item summary {
+  font-size: .97rem; font-weight: 600; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-arrow { font-size: 1.1rem; color: var(--accent); transition: transform .25s; flex-shrink: 0; }
+details[open] .faq-arrow { transform: rotate(45deg); }
+.faq-body { font-size: .88rem; color: var(--muted); line-height: 1.75; margin-top: 14px; padding-right: 32px; }
+
+/* ─── FOOTER ───────────────────────────────────────────── */
+footer {
+  background: #111009; color: rgba(255,255,255,.45);
+  padding: 56px 0 40px; border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: rgba(255,255,255,.7); }
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: .82rem; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: rgba(255,255,255,.75); }
+.footer-copy { font-size: .78rem; width: 100%; text-align: center; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.05); margin-top: 12px; }
+
+/* ─── FLOATING WHATSAPP ─────────────────────────────────── */
+.fab-wa {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25d366; color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1.5rem;
+  box-shadow: 0 6px 24px rgba(37,211,102,.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.fab-wa:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,.5); }
+
+/* ─── RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero-inner          { grid-template-columns: 1fr; }
+  .hero-photo-wrap     { display: none; }
+  .numbers-grid        { grid-template-columns: repeat(2, 1fr); }
+  .benefits-grid       { grid-template-columns: 1fr; }
+  .about-grid          { grid-template-columns: 1fr; }
+  .about-image-wrap    { display: none; }
+  .video-grid          { grid-template-columns: repeat(2, 1fr); }
+  .gallery-strip-inner { grid-template-columns: repeat(2, 1fr); }
+  .form-grid           { grid-template-columns: 1fr; }
+  .steps-grid          { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .section             { padding: 64px 0; }
+  .numbers-grid        { grid-template-columns: repeat(2, 1fr); }
+  .video-grid          { grid-template-columns: 1fr; }
+  .gallery-strip-inner { grid-template-columns: 1fr; }
+  .hero h1             { font-size: 2rem; }
+  .fotos-carousel img  { flex: 0 0 200px; height: 280px; }
+  .hero-invest-card    { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ░░ NAV ░░ -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Lembre<span>-</span>Lembre</a>
+    <a class="nav-cta" href="#primeiro-passo">Dê o primeiro passo</a>
+  </div>
+</nav>
+
+<!-- ░░ HERO ░░ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Oportunidade de Franquia</div>
+      <h1>Realize o sonho de ter <em>seu próprio negócio</em> com a Lembre-Lembre</h1>
+      <p class="hero-sub">
+        Faça parte da maior rede de franquias de foto instantânea do Brasil e transforme
+        momentos especiais em uma fonte real de renda. Com mais de
+        <strong style="color:#e8b86d">63 franquias</strong> ao redor do mundo e
+        <strong style="color:#e8b86d">R$6,9 milhões faturados</strong> no último ano,
+        a LL oferece um modelo acessível, escalável e possível de encaixar na sua rotina.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#primeiro-passo">Quero fazer acontecer!</a>
+        <a class="btn-ghost" href="#como-funciona">Entenda como funciona</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hstat-n">63</div>
+          <div class="hstat-l">Franquias ativas</div>
+        </div>
+        <div>
+          <div class="hstat-n" style="font-size:1.5rem">ATÉ 80%</div>
+          <div class="hstat-l">Lucro por evento</div>
+        </div>
+        <div>
+          <div class="hstat-n">&lt;12m</div>
+          <div class="hstat-l">Retorno do investimento</div>
+        </div>
+        <div>
+          <div class="hstat-n">13</div>
+          <div class="hstat-l">Anos de experiência</div>
+        </div>
+      </div>
+      <div class="hero-invest-card">
+        <div class="hero-invest-value">R$ 51.950</div>
+        <div class="hero-invest-label">
+          Investimento inicial completo<br>
+          <span>Inclui equipamento, treinamento e suporte</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <img class="hero-main-img"
+           src="Desktop/CLAUDE%20-%20LP/IMAGEM/Lembre-Lembre%20Lou%26Jos%C3%A9-48.jpg"
+           alt="Convidados celebrando com foto-lembrança Lembre-Lembre">
+      <div class="hero-img-pill">📸 Foto-lembrança física em menos de 60 segundos</div>
+      <div class="hero-img-badge">
+        <div class="ab-n">+R$450k</div>
+        <div class="ab-l">faturamento pode chegar/ano</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ PROOF BAR ░░ -->
+<div class="proof-bar">
+  <div class="proof-inner">
+    <span class="proof-label">Presente em</span>
+    <div class="proof-pill"><span class="dot"></span> 3 países</div>
+    <div class="proof-divider"></div>
+    <div class="proof-pill"><span class="dot"></span> 63 unidades ativas</div>
+    <div class="proof-divider"></div>
+    <div class="proof-pill"><span class="dot"></span> Franquia desde 2019</div>
+    <div class="proof-divider"></div>
+    <div class="proof-pill"><span class="dot"></span> R$ 6,9M faturados em 2025</div>
+  </div>
+</div>
+
+<!-- ░░ FORM TOP ░░ -->
+<section class="section form-section" id="primeiro-passo" style="padding: 80px 0;">
+  <div class="container">
+    <div class="center" style="color:var(--white)">
+      <span class="sec-eyebrow">Seja dono do seu negócio</span>
+      <h2 class="sec-title" style="color:var(--white)">Dê o primeiro passo agora</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.55)">
+        Preencha abaixo e nossa equipe entra em contato para apresentar o modelo completo.
+      </p>
+    </div>
+    <div class="form-wrap">
+      <form class="form-grid" id="leadFormTop" onsubmit="submitFormTop(event)">
+        <div class="field">
+          <label>Seu nome completo</label>
+          <input type="text" placeholder="João Silva" required id="ft-name">
+        </div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="(11) 99999-9999" required id="ft-phone">
+        </div>
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" placeholder="joao@email.com" required id="ft-email">
+        </div>
+        <div class="field">
+          <label>Cidade / Estado</label>
+          <input type="text" placeholder="João Pessoa, PB" required id="ft-city">
+        </div>
+        <div class="field full">
+          <label>Sua situação em relação ao investimento de R$ 51.950</label>
+          <select id="ft-capital" required>
+            <option value="">Selecione...</option>
+            <option value="tem_total">Já tenho o valor total disponível</option>
+            <option value="tem_metade">Tenho aproximadamente a metade (R$ ~25.000)</option>
+            <option value="financiamento">Preciso de financiamento / parcelamento</option>
+            <option value="sem_capital">Ainda não tenho o valor no momento</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Alguma mensagem ou dúvida? (opcional)</label>
+          <textarea placeholder="Pode escrever à vontade..." id="ft-msg"></textarea>
+        </div>
+        <div style="grid-column:1/-1">
+          <button type="submit" class="form-submit">Dê o primeiro passo →</button>
+          <p class="form-note">Seus dados são protegidos e nunca serão compartilhados com terceiros.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ DEPOIMENTOS TOPO ░░ -->
+<section class="section testimonials-section" style="padding-top:64px; padding-bottom:64px;">
+  <div class="container">
+    <div class="center">
+      <span class="sec-eyebrow">Depoimentos reais</span>
+      <h2 class="sec-title">Quem já faz parte<br>da rede Lembre-Lembre</h2>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="Desktop/CLAUDE%20-%20LP/depoimento/SnapInsta.to_AQMAIgkb6IijqhEtnO3w2a4BuzYeZ31uwHIrZbWYWSt-pJs9p21OcKBap23cDSmwOKYF51j446Hvq70hPgX5n1c5Z0rE7JLvHrNeasA.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="Desktop/CLAUDE%20-%20LP/depoimento/SnapInsta.to_AQMdZ0h-Z2sBJZbYiOhbfdl0QO4lAsSWjQPckIgK2wfwPbIG5bGvZVan13Ic-TTlhR9ipMMwlLGiGKMshpDvn08nNmY7_2NYSnCUbv8.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="Desktop/CLAUDE%20-%20LP/depoimento/SnapInsta.to_AQNf1Imu4s_qFQFH8LIynovR8KRRDFVowC_bmMUYNsaoCdGdfZ-FL-qBikRJ8rD4mQrhtTzDJuSd1woMdyhrboe5zpn7n3jVqUuwizg.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ NUMBERS ░░ -->
+<section class="section numbers-section">
+  <div class="container">
+    <div class="center">
+      <span class="sec-eyebrow">Nossos números</span>
+      <h2 class="sec-title">Resultados que falam <br>por si mesmos</h2>
+      <p class="sec-sub">
+        Mais de uma década transformando momentos em memórias, e transformando
+        franqueados em empreendedores de sucesso.
+      </p>
+    </div>
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="num-value">63</div>
+        <div class="num-label">Franquias ativas ao redor do mundo</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">R$6,9M</div>
+        <div class="num-label">Faturamento da rede no último ano</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">80%</div>
+        <div class="num-label">Margem de lucro por evento realizado</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">12</div>
+        <div class="num-label">Meses em média para recuperar o investimento</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ COMO FUNCIONA ░░ -->
+<section class="section" id="como-funciona">
+  <div class="container">
+    <div class="center">
+      <span class="sec-eyebrow">Como funciona</span>
+      <h2 class="sec-title">Um negócio com operação simples<br>e potencial real de crescimento</h2>
+      <p class="sec-sub">
+        A Lembre-Lembre foi pensada para quem deseja empreender com uma estrutura enxuta, portátil e sem
+        a complexidade de um ponto físico. Não exige aluguel fixo nem conhecimento técnico prévio em
+        fotografia, mas exige dedicação, relacionamento e presença ativa no mercado local para transformar
+        oportunidades em contratos.
+      </p>
+    </div>
+    <div class="steps-grid">
+
+      <div class="step-card">
+        <img class="step-card-img"
+             src="Desktop/CLAUDE%20-%20LP/IMAGEM/Lembre-Lembre%20Lou%26Jos%C3%A9-48.jpg"
+             alt="Franqueado fechando contrato com cliente">
+        <div class="step-card-body">
+          <div class="step-num">01</div>
+          <h3>Você desenvolve o mercado e fecha contratos</h3>
+          <p>Casamentos, eventos corporativos, aniversários, formaturas, ativações de marca e eventos culturais acontecem durante todo o ano. Com o suporte da franqueadora, você aprende a prospectar, se posicionar, apresentar valor e fechar contratos com clientes e parceiros estratégicos.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <img class="step-card-img"
+             src="Desktop/CLAUDE%20-%20LP/IMAGEM/Lembre-Lembre%20Lou%26Jos%C3%A9-28.jpg"
+             alt="Equipamento Lembre-Lembre montado no evento">
+        <div class="step-card-body">
+          <div class="step-num">02</div>
+          <h3>Leva o equipamento ao evento</h3>
+          <p>A estrutura é compacta, portátil e cabe em qualquer carro. A operação foi pensada para ser prática, sem necessidade de escritório, depósito ou logística complexa. Você monta, entrega a experiência e acompanha de perto a qualidade do serviço e a resposta do público.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <img class="step-card-img"
+             src="Desktop/CLAUDE%20-%20LP/IMAGEM/Lembre-Lembre%20Lou%26Jos%C3%A9-80.jpg"
+             alt="Convidada segurando foto-lembrança impressa">
+        <div class="step-card-body">
+          <div class="step-num">03</div>
+          <h3>Entrega memórias e constrói recorrência</h3>
+          <p>O produto encanta no evento, gera desejo nos convidados e fortalece o posicionamento da marca na sua região. Com uma operação bem feita, presença comercial consistente e apoio de marketing da franqueadora, cada evento se torna também uma vitrine para novos contratos.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░ BENEFITS ░░ -->
+<section class="section benefits-section">
+  <div class="container">
+    <div class="center" style="color:var(--white)">
+      <span class="sec-eyebrow">Por que a Lembre-Lembre</span>
+      <h2 class="sec-title" style="color:var(--white)">Tudo que você recebe quando<br>se torna um franqueado</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.55)">
+        A maior rede de foto-lembrança do Brasil. Diversão, resultado e uma comunidade que trabalha junto.
+        E não, você não precisa saber fotografar. A gente explica tudo.
+      </p>
+    </div>
+    <div class="benefits-grid" style="margin-top:56px">
+      <div class="benefit-item">
+        <div class="benefit-icon">🚀</div>
+        <div>
+          <h4>Infraestrutura pronta</h4>
+          <p>Toda a operação já foi estruturada e testada. Você entra em um modelo validado com mais de 10 anos de mercado.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">📚</div>
+        <div>
+          <h4>Treinamento completo</h4>
+          <p>Capacitação inicial e suporte contínuo. Não precisa saber nada de fotografia para começar.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">📱</div>
+        <div>
+          <h4>Plataforma de gestão</h4>
+          <p>Sistema de gestão de contratos e clientes.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🎨</div>
+        <div>
+          <h4>Material de marketing</h4>
+          <p>Arte, identidade visual e materiais prontos para você usar. Sem precisar contratar designer ou agência.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">📅</div>
+        <div>
+          <h4>Negócio de fim de semana</h4>
+          <p>A maioria dos eventos é sexta, sábado ou domingo. Ideal para quem ainda trabalha na semana e quer fazer uma transição gradual.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🌍</div>
+        <div>
+          <h4>Uma rede que cresce junto</h4>
+          <p>Ao se tornar franqueado Lembre-Lembre, você passa a fazer parte de uma comunidade ativa de empreendedores no Brasil e em Portugal, com troca de experiências, benchmarks reais e aprendizados compartilhados que fortalecem sua operação e impulsionam seu crescimento.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💼</div>
+        <div>
+          <h4>Zero funcionário obrigatório</h4>
+          <p>Você pode operar sozinho. Sem encargos trabalhistas, sem folha de pagamento para gerir desde o primeiro dia.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🏠</div>
+        <div>
+          <h4>Sem aluguel fixo</h4>
+          <p>Não precisa de ponto comercial. Seu estúdio vai ao cliente — em qualquer salão de festas, buffet ou espaço de eventos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ ABOUT ░░ -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <img class="about-real-img"
+             src="Desktop/CLAUDE%20-%20LP/IMAGEM/Lembre-Lembre%20Lou%26Jos%C3%A9-28.jpg"
+             alt="Equipamento Lembre-Lembre em cerimônia de casamento">
+        <div class="about-badge">
+          <div class="ab-n">12+</div>
+          <div class="ab-l">anos de mercado</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="sec-eyebrow">Nossa história</span>
+        <h2 class="sec-title">Nasceu no Brasil.<br>Cresce pelo mundo.</h2>
+        <p>
+          A Lembre-Lembre foi criada em 2013 por Deivid Ribeiro (fotógrafo de eventos) e Camilla Mayer
+          (arquiteta) com uma proposta simples: transformar eventos em experiências memoráveis, unindo
+          as pessoas através da fotografia, promovendo diversão e lembranças impressas na hora.
+        </p>
+        <p>
+          O que começou como um projeto local virou a maior rede de foto-lembrança do Brasil. Já somos
+          mais de 60 franqueados espalhados em território nacional e fora dele também, com unidades na
+          Europa e África provando a resiliência do modelo de negócio e sua adaptabilidade a diversas culturas.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Fundada em 2013</span>
+          <span class="tag">Franquia desde 2019</span>
+          <span class="tag">Portugal desde 2022</span>
+          <span class="tag">63 unidades</span>
+          <span class="tag">Modelo validado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ░░ TESTIMONIALS ░░ -->
+<section class="section testimonials-section" id="depoimentos">
+  <div class="container">
+    <div class="center">
+      <span class="sec-eyebrow">Mais depoimentos</span>
+      <h2 class="sec-title">Mais histórias de<br>quem acreditou no modelo</h2>
+    </div>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="Desktop/CLAUDE%20-%20LP/depoimento/SnapInsta.to_AQPgH6YtvWjRZFgLs-YSU_z1HhqT-nIcp7pIszw0v1XySET8HwL8KugshDKgAqJjwIkxVY9gXZSgsdjx3_i5ss4T8RiMfPh6F373deI.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="Desktop/CLAUDE%20-%20LP/depoimento/snapinsta.com.br-69d3bdeba944b.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="Desktop/CLAUDE%20-%20LP/depoimento/snapinsta.com.br-69d3bdfe5be1c.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div><!-- /video-grid -->
+  </div>
+</section>
+
+<!-- ░░ FAQ ░░ -->
+<section class="section">
+  <div class="container">
+    <div class="center">
+      <span class="sec-eyebrow">Dúvidas frequentes</span>
+      <h2 class="sec-title">Perguntas que a gente<br>recebe todo dia</h2>
+    </div>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>
+          Preciso ter experiência com fotografia?
+          <span class="faq-arrow">+</span>
+        </summary>
+        <p class="faq-body">
+          Não. A Lembre-Lembre não exige nenhum conhecimento técnico em fotografia.
+          O treinamento inicial cobre tudo que você precisa para operar com qualidade
+          desde o primeiro evento.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Preciso de um ponto comercial ou escritório?
+          <span class="faq-arrow">+</span>
+        </summary>
+        <p class="faq-body">
+          Não. A estrutura é portátil e vai ao cliente: salões de festas, buffets,
+          espaços corporativos. Você opera de casa e leva o equipamento apenas nos dias de evento.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Preciso contratar funcionários?
+          <span class="faq-arrow">+</span>
+        </summary>
+        <p class="faq-body">
+          Não é obrigatório. Muitos franqueados operam sozinhos ou com o apoio de
+          um familiar. À medida que a agenda cresce, você pode contratar um assistente
+          para escalar.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Qual o prazo médio para retorno do investimento?
+          <span class="faq-arrow">+</span>
+        </summary>
+        <p class="faq-body">
+          O prazo médio da rede é inferior a 12 meses. Com o faturamento médio
+          anual que pode chegar a mais de R$400.000 e margem de até 80% por evento, o retorno é rápido
+          em comparação a outros modelos de franquia.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Em que dias da semana eu trabalho?
+          <span class="faq-arrow">+</span>
+        </summary>
+        <p class="faq-body">
+          Eventos acontecem principalmente às sextas, sábados e domingos.
+          Isso torna a Lembre-Lembre ideal para quem ainda está em transição
+          de carreira e não pode abrir mão da renda atual.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Quais tipos de eventos posso atender?
+          <span class="faq-arrow">+</span>
+        </summary>
+        <p class="faq-body">
+          Casamentos, aniversários (infantis, 15 anos, adultos), eventos corporativos,
+          formaturas, confraternizações, feiras, lançamentos de produto e muito mais.
+          A demanda por foto-lembrança existe em praticamente todo tipo de celebração.
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FORM ░░ -->
+<section class="section form-section" id="quero-ser-franqueado">
+  <div class="container">
+    <div class="center" style="color:var(--white)">
+      <span class="sec-eyebrow">Candidatura</span>
+      <h2 class="sec-title" style="color:var(--white)">Dê o primeiro passo<br>agora mesmo</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.55)">
+        Preencha o formulário e nossa equipe entrará em contato para apresentar
+        o modelo completo e tirar todas as suas dúvidas.
+      </p>
+    </div>
+    <div class="form-wrap">
+      <form class="form-grid" id="leadForm" onsubmit="submitForm(event)">
+        <div class="field">
+          <label>Seu nome completo</label>
+          <input type="text" placeholder="João Silva" required id="f-name">
+        </div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="(11) 99999-9999" required id="f-phone">
+        </div>
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" placeholder="joao@email.com" required id="f-email">
+        </div>
+        <div class="field">
+          <label>Cidade / Estado</label>
+          <input type="text" placeholder="João Pessoa, PB" required id="f-city">
+        </div>
+        <div class="field full">
+          <label>Sua situação em relação ao investimento de R$ 51.950</label>
+          <select id="f-source" required>
+            <option value="">Selecione...</option>
+            <option value="tem_total">Já tenho o valor total disponível</option>
+            <option value="tem_metade">Tenho aproximadamente a metade (R$ ~25.000)</option>
+            <option value="financiamento">Preciso de financiamento / parcelamento</option>
+            <option value="sem_capital">Ainda não tenho o valor no momento</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Alguma mensagem ou dúvida? (opcional)</label>
+          <textarea placeholder="Pode escrever à vontade..." id="f-msg"></textarea>
+        </div>
+        <div style="grid-column:1/-1">
+          <button type="submit" class="form-submit">Dê o primeiro passo →</button>
+          <p class="form-note">Seus dados são protegidos e nunca serão compartilhados com terceiros.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Lembre<span>-</span>Lembre</div>
+    <div class="footer-links">
+      <a href="https://lembrelembre.com.br" target="_blank">Site oficial</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#quero-ser-franqueado">Candidatura</a>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <p class="footer-copy">
+      © 2025 Lembre-Lembre Franchising. Todos os direitos reservados.
+      Fundada em João Pessoa, PB. Presente em Brasil e Portugal.
+    </p>
+  </div>
+</footer>
+
+<!-- ░░ FLOATING WA ░░ -->
+<a class="fab-wa" href="https://wa.me/558374006991?text=Olá!%20Tenho%20interesse%20em%20ser%20franqueado%20da%20Lembre-Lembre." target="_blank" title="Falar no WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- ░░ SCRIPTS ░░ -->
+<script>
+// Drag-to-scroll no carrossel de fotos
+(function() {
+  const el = document.getElementById('fotosCarousel');
+  if (!el) return;
+  let isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; });
+  el.addEventListener('mouseleave', () => { isDown = false; });
+  el.addEventListener('mouseup', () => { isDown = false; });
+  el.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX); });
+})();
+
+function handleSubmit(ids, e) {
+  e.preventDefault();
+  const name    = document.getElementById(ids.name).value.trim();
+  const phone   = document.getElementById(ids.phone).value.trim();
+  const city    = document.getElementById(ids.city).value.trim();
+  const capital = document.getElementById(ids.capital).value;
+  const msg     = document.getElementById(ids.msg).value.trim();
+
+  const semCapital = ['sem_capital', 'financiamento'];
+
+  if (semCapital.includes(capital)) {
+    // Lead sem capital imediato → não abre WhatsApp.
+    // Conecte ao fluxo de nutrição (RD Station / Mailchimp / lista de remarketing).
+    document.getElementById(ids.form).innerHTML = `
+      <div style="text-align:center; padding: 40px 0;">
+        <div style="font-size:2.5rem; margin-bottom:16px;">🙌</div>
+        <h3 style="color:var(--white); font-family:'Fraunces',serif; font-size:1.5rem; margin-bottom:12px;">
+          Recebemos seu contato, ${name}!
+        </h3>
+        <p style="color:rgba(255,255,255,.6); font-size:.9rem; line-height:1.7;">
+          Em breve você vai receber conteúdos e informações especiais sobre como<br>
+          se preparar para dar o primeiro passo com a Lembre-Lembre.
+        </p>
+      </div>
+    `;
+    // TODO: Dispare o evento de conversão para o pixel / tag manager aqui
+    // TODO: Adicione este lead à lista de nutrição no RD Station / Mailchimp
+    return;
+  }
+
+  // Lead com capital → abre WhatsApp normalmente
+  const text = encodeURIComponent(
+    `Olá! Me chamo *${name}*, sou de *${city}* e tenho interesse em ser franqueado da Lembre-Lembre.\n\n` +
+    (msg ? `Mensagem: ${msg}` : 'Gostaria de saber mais sobre a franquia.')
+  );
+  window.open(`https://wa.me/558374006991?text=${text}`, '_blank');
+}
+
+function submitForm(e) {
+  handleSubmit({ form:'leadForm', name:'f-name', phone:'f-phone', city:'f-city', capital:'f-source', msg:'f-msg' }, e);
+}
+
+function submitFormTop(e) {
+  handleSubmit({ form:'leadFormTop', name:'ft-name', phone:'ft-phone', city:'ft-city', capital:'ft-capital', msg:'ft-msg' }, e);
+}
+</script>
+
+</body>
+</html>
