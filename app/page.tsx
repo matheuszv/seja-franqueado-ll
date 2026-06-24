@@ -7,12 +7,12 @@ export default function Home() {
       {/* ── NAV ── */}
       <nav className="sticky top-0 z-100 bg-[rgba(250,250,248,.92)] backdrop-blur-[14px] border-b border-border">
         <div className="max-w-[1120px] mx-auto px-7 h-[68px] flex items-center justify-between">
-          <a href="#" className="font-fraunces text-[1.25rem] font-bold tracking-[-0.03em] text-bg3 no-underline">
+          <a href="#" className="font-fraunces text-[1rem] sm:text-[1.25rem] font-bold tracking-[-0.03em] text-bg3 no-underline">
             Lembre<span className="text-accent">-</span>Lembre
           </a>
           <a
             href="#primeiro-passo"
-            className="bg-bg3 text-white border-none rounded-lg px-[22px] py-[10px] text-[.85rem] font-semibold cursor-pointer no-underline transition-all hover:bg-[#333] hover:-translate-y-px"
+            className="bg-bg3 text-white border-none rounded-lg px-[16px] sm:px-[22px] py-[8px] sm:py-[10px] text-[.75rem] sm:text-[.85rem] font-semibold cursor-pointer no-underline transition-all hover:bg-[#333] hover:-translate-y-px"
           >
             Dê o primeiro passo
           </a>
@@ -201,7 +201,7 @@ export default function Home() {
               { value: "12", label: "Meses em média para recuperar o investimento" },
             ].map((item, i) => (
               <div key={i} className="bg-white px-8 py-10 flex flex-col items-center text-center">
-                <div className="font-fraunces text-[2.8rem] font-bold text-accent leading-none mb-2.5">{item.value}</div>
+                <div className="font-fraunces sm:text-[2.8rem] font-bold text-accent leading-none mb-2.5 text-[2.4rem]">{item.value}</div>
                 <div className="text-[.82rem] text-muted leading-normal max-w-[140px]">{item.label}</div>
               </div>
             ))}

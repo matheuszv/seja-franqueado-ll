@@ -76,7 +76,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       )}
 
       <div className="flex flex-col gap-[7px]">
-        <label className="text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em]">
+        <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           Seu nome completo
         </label>
         <input
@@ -90,7 +90,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       </div>
 
       <div className="flex flex-col gap-[7px]">
-        <label className="text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em]">
+        <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           WhatsApp
         </label>
         <input
@@ -104,7 +104,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       </div>
 
       <div className="flex flex-col gap-[7px]">
-        <label className="text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em]">
+        <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           E-mail
         </label>
         <input
@@ -118,7 +118,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       </div>
 
       <div className="flex flex-col gap-[7px]">
-        <label className="text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em]">
+        <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           Cidade / Estado
         </label>
         <input
@@ -132,7 +132,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       </div>
 
       <div className="col-span-2 flex flex-col gap-[7px]">
-        <label className="text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em]">
+        <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           Sua situação em relação ao investimento de R$ 51.950
         </label>
         <select
@@ -150,7 +150,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       </div>
 
       <div className="col-span-2 flex flex-col gap-[7px]">
-        <label className="text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em]">
+        <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           Alguma mensagem ou dúvida? (opcional)
         </label>
         <textarea
