@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"Lembre-Lembre Franquia" <${process.env.SMTP_USER}>`,
       to: leadEmail,
-      subject: `Novo lead: ${name.trim()} — ${city.trim()}`,
+      subject: `Seja um Franqueado: ${name.trim()} — ${city.trim()}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#fafaf8;border-radius:12px;">
           <h2 style="font-size:1.4rem;color:#1a1712;margin-bottom:24px;border-bottom:2px solid #c9913a;padding-bottom:12px;">
