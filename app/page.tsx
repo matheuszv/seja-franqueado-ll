@@ -1,6 +1,20 @@
 import LeadForm from "@/app/components/LeadForm";
 import FotosCarousel from "@/app/components/FotosCarousel";
 
+// Importações das Fotos
+import fotoDR309194 from '@/public/assets/FOTOS/DR309194.jpg';
+import fotoEvento1 from '@/public/assets/FOTOS/evento-1.jpg';
+import fotoEvento2 from '@/public/assets/FOTOS/evento-2.jpg';
+import fotoLouJose53 from '@/public/assets/FOTOS/Lembre-Lembre Lou&José-53.jpg';
+import fotoLouJose96 from '@/public/assets/FOTOS/Lembre-Lembre Lou&José-96.jpg';
+
+// Caminhos dos Vídeos (arquivos estão em /public, referencie pelo path público)
+const videoCgDepoimento = '/assets/VIDEOS/cg-depoimento.mp4';
+const videoDepoimento1 = '/assets/VIDEOS/depoimento-1.mp4';
+const videoMaringaDepoimento = '/assets/VIDEOS/maringa-depoimento.mp4';
+const videoSalvadorDepoimento = '/assets/VIDEOS/SALVADOR-DEPOIMENTO.mp4';
+const videoSaoJose = '/assets/VIDEOS/SÃO-JOSÉ.mp4';
+
 export default function Home() {
   return (
     <>
@@ -85,7 +99,7 @@ export default function Home() {
           {/* Hero photo */}
           <div className="relative max-[960px]:hidden">
             <img
-              src="/images/Lembre-Lembre-48.jpg"
+              src={fotoDR309194.src}
               alt="Convidados celebrando com foto-lembrança Lembre-Lembre"
               className="w-full rounded-[20px] object-cover aspect-4/5 block shadow-[0_24px_64px_rgba(0,0,0,.5)]"
             />
@@ -159,19 +173,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-3 gap-5 mt-14 max-[960px]:grid-cols-2 max-[600px]:grid-cols-1">
             {[
-              "depoimento-1.mp4",
-              "depoimento-2.mp4",
-              "depoimento-3.mp4",
+              videoDepoimento1,
+              videoMaringaDepoimento,
+              videoSalvadorDepoimento,
             ].map((file, i) => (
               <div key={i} className="rounded-xl overflow-hidden bg-[#111] relative">
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  className="w-full aspect-9/16 object-cover block cursor-pointer"
-                >
-                  <source src={`/videos/${file}`} type="video/mp4" />
-                </video>
+                <video src={file} controls className="w-full aspect-9/16 object-cover block cursor-pointer" />
               </div>
             ))}
           </div>
@@ -228,19 +235,19 @@ export default function Home() {
             {[
               {
                 num: "01",
-                img: "/images/Lembre-Lembre-48.jpg",
+                img: fotoLouJose53.src,
                 title: "Você desenvolve o mercado e fecha contratos",
                 desc: "Casamentos, eventos corporativos, aniversários, formaturas, ativações de marca e eventos culturais acontecem durante todo o ano. Com o suporte da franqueadora, você aprende a prospectar, se posicionar, apresentar valor e fechar contratos.",
               },
               {
                 num: "02",
-                img: "/images/Lembre-Lembre-28.jpg",
+                img: fotoEvento2.src,
                 title: "Leva o equipamento ao evento",
                 desc: "A estrutura é compacta, portátil e cabe em qualquer carro. A operação foi pensada para ser prática, sem necessidade de escritório, depósito ou logística complexa.",
               },
               {
                 num: "03",
-                img: "/images/Lembre-Lembre-80.jpg",
+                img: fotoLouJose96.src,
                 title: "Entrega memórias e constrói recorrência",
                 desc: "O produto encanta no evento, gera desejo nos convidados e fortalece o posicionamento da marca na sua região. Cada evento se torna também uma vitrine para novos contratos.",
               },
@@ -315,7 +322,7 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-20 items-center max-[960px]:grid-cols-1">
             <div className="relative max-[960px]:hidden">
               <img
-                src="/images/Lembre-Lembre-28.jpg"
+                src={fotoEvento1.src}
                 alt="Equipamento Lembre-Lembre em cerimônia de casamento"
                 className="w-full rounded-[20px] object-cover aspect-3/4 block shadow-[0_20px_56px_rgba(0,0,0,.1)]"
               />
@@ -365,10 +372,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid grid-cols-3 gap-5 mt-14 max-[960px]:grid-cols-2 max-[600px]:grid-cols-1">
-            {[
-              "depoimento-4.mp4",
-              "depoimento-5.mp4",
-              "depoimento-6.mp4",
+            {[videoCgDepoimento, videoSaoJose, videoMaringaDepoimento
             ].map((file, i) => (
               <div key={i} className="rounded-xl overflow-hidden bg-[#111] relative">
                 <video
@@ -377,7 +381,7 @@ export default function Home() {
                   preload="metadata"
                   className="w-full aspect-9/16 object-cover block cursor-pointer"
                 >
-                  <source src={`/videos/${file}`} type="video/mp4" />
+                  <source src={file} type="video/mp4" />
                 </video>
               </div>
             ))}
