@@ -486,7 +486,7 @@ export default function Home() {
         </div>
         <div className="max-w-[1120px] mx-auto px-7">
           <p className="text-[.78rem] text-center pt-7 border-t border-white/5 mt-3">
-            © 2025 Lembre-Lembre Franchising. Todos os direitos reservados.
+            © 2026 Lembre-Lembre Franchising. Todos os direitos reservados.
             Fundada em João Pessoa, PB. Presente em Brasil e Portugal.
           </p>
         </div>
