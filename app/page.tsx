@@ -1,12 +1,14 @@
 import LeadForm from "@/app/components/LeadForm";
 import FotosCarousel from "@/app/components/FotosCarousel";
+import LazyVideo from "@/app/components/LazyVideo";
+
 
 // Importações das Fotos
 import fotoDR309194 from '@/public/assets/FOTOS/DR309194.jpg';
 import fotoEvento1 from '@/public/assets/FOTOS/evento-1.jpg';
 import fotoEvento2 from '@/public/assets/FOTOS/evento-2.jpg';
-import fotoLouJose53 from '@/public/assets/FOTOS/Lembre-Lembre Lou&José-53.jpg';
-import fotoLouJose96 from '@/public/assets/FOTOS/Lembre-Lembre Lou&José-96.jpg';
+import fotoLouJose53 from '@/public/assets/FOTOS/Lembre-Lembre-Lou&José-53.jpg';
+import fotoLouJose96 from '@/public/assets/FOTOS/Lembre-Lembre-Lou&José-96.jpg';
 
 // Caminhos dos Vídeos (arquivos estão em /public, referencie pelo path público)
 const videoCgDepoimento = '/assets/VIDEOS/cg-depoimento.mp4';
@@ -177,9 +179,15 @@ export default function Home() {
               videoMaringaDepoimento,
               videoSalvadorDepoimento,
             ].map((file, i) => (
-              <div key={i} className="rounded-xl overflow-hidden bg-[#111] relative">
-                <video src={file} controls className="w-full aspect-9/16 object-cover block cursor-pointer" />
+                <div key={i} className="rounded-xl overflow-hidden bg-[#111] relative">
+                <LazyVideo
+                  src={file}
+                  controls
+                  playsInline
+                  className="w-full aspect-9/16 object-cover block cursor-pointer"
+                />
               </div>
+
             ))}
           </div>
         </div>
@@ -375,14 +383,12 @@ export default function Home() {
             {[videoCgDepoimento, videoSaoJose, videoMaringaDepoimento
             ].map((file, i) => (
               <div key={i} className="rounded-xl overflow-hidden bg-[#111] relative">
-                <video
+                <LazyVideo
+                  src={file}
                   controls
                   playsInline
-                  preload="metadata"
                   className="w-full aspect-9/16 object-cover block cursor-pointer"
-                >
-                  <source src={file} type="video/mp4" />
-                </video>
+                />
               </div>
             ))}
           </div>
