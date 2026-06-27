@@ -7,8 +7,8 @@ import LazyVideo from "@/app/components/LazyVideo";
 import fotoDR309194 from '@/public/assets/FOTOS/DR309194.jpg';
 import fotoEvento1 from '@/public/assets/FOTOS/evento-1.jpg';
 import fotoEvento2 from '@/public/assets/FOTOS/evento-2.jpg';
-import fotoLouJose53 from '@/public/assets/FOTOS/Lembre-Lembre-Lou&José-53.jpg';
-import fotoLouJose96 from '@/public/assets/FOTOS/Lembre-Lembre-Lou&José-96.jpg';
+import fotoLouJose53 from '@/public/assets/FOTOS/Lembre-Lembre-LouJose-53.jpg';
+import fotoLouJose96 from '@/public/assets/FOTOS/Lembre-Lembre-LouJose-96.jpg';
 
 // Caminhos dos Vídeos (arquivos estão em /public, referencie pelo path público)
 const videoCgDepoimento = '/assets/VIDEOS/cg-depoimento.mp4';
