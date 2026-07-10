@@ -17,6 +17,23 @@ const videoMaringaDepoimento = '/assets/VIDEOS/maringa-depoimento.mp4';
 const videoSalvadorDepoimento = '/assets/VIDEOS/SALVADOR-DEPOIMENTO.mp4';
 const videoSaoJose = '/assets/VIDEOS/SÃO-JOSÉ.mp4';
 
+const fotosCarrosel = [
+  "/assets/FOTOS/FOTOS LL (1).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (7).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (9).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (10).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (13).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (14).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (15).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (16).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (17).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (18).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (19).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (20).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (21).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (22).jpg.jpeg",
+];
+
 export default function Home() {
   return (
     <>
@@ -161,6 +178,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <FotosCarousel fotos={fotosCarrosel}/>
 
       {/* ── DEPOIMENTOS TOPO ── */}
       <section className="py-16 bg-bg">
@@ -444,6 +462,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <FotosCarousel fotos={fotosCarrosel}/>
+
 
       {/* ── FORM FINAL ── */}
       <section id="quero-ser-franqueado" className="py-24 bg-bg3">

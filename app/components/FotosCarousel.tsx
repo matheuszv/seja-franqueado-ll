@@ -3,15 +3,23 @@
 import { useRef } from "react";
 
 const fotos = [
-  "/images/foto-1.jpg",
-  "/images/foto-2.jpg",
-  "/images/foto-3.jpg",
-  "/images/foto-4.jpg",
-  "/images/foto-5.jpg",
-  "/images/foto-6.jpg",
+  "/assets/FOTOS/FOTOS LL (1).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (7).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (9).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (10).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (13).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (14).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (15).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (16).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (17).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (18).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (19).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (20).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (21).jpg.jpeg",
+  "/assets/FOTOS/FOTOS LL (22).jpg.jpeg",
 ];
 
-export default function FotosCarousel() {
+export default function FotosCarousel({ fotos }: { fotos: string[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const isDown = useRef(false);
   const startX = useRef(0);
@@ -61,7 +69,7 @@ export default function FotosCarousel() {
           src={src}
           alt={`Foto-lembrança Lembre-Lembre ${i + 1}`}
           draggable={false}
-          className="flex-none w-[260px] h-[360px] object-cover rounded-xl brightness-[.88] hover:brightness-100 hover:scale-[1.03] transition-all duration-300"
+          className="flex-none w-[260px] h-[360px] object-cover brightness-[.88] hover:brightness-100 transition-all duration-300"
           style={{ scrollSnapAlign: "start" }}
         />
       ))}
