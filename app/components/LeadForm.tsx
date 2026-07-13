@@ -54,7 +54,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
     return (
       <div className="text-center py-10">
         <div className="text-5xl mb-4">🙌</div>
-        <h3 className="font-fraunces text-2xl text-white font-semibold mb-3">
+        <h3 className="font-heading text-2xl text-white font-semibold mb-3">
           Recebemos seu contato, {state.name}!
         </h3>
         <p className="text-white/60 text-sm leading-relaxed">
@@ -85,7 +85,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
           placeholder="João Silva"
           required
           disabled={isLoading}
-          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-inter disabled:opacity-50"
+          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-body disabled:opacity-50"
         />
       </div>
 
@@ -99,7 +99,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
           placeholder="(11) 99999-9999"
           required
           disabled={isLoading}
-          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-inter disabled:opacity-50"
+          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-body disabled:opacity-50"
         />
       </div>
 
@@ -113,7 +113,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
           placeholder="joao@email.com"
           required
           disabled={isLoading}
-          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-inter disabled:opacity-50"
+          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-body disabled:opacity-50"
         />
       </div>
 
@@ -127,7 +127,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
           placeholder="João Pessoa, PB"
           required
           disabled={isLoading}
-          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-inter disabled:opacity-50"
+          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-body disabled:opacity-50"
         />
       </div>
 
@@ -139,7 +139,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
           name="capital"
           required
           disabled={isLoading}
-          className="lead-select bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white outline-none focus:border-accent focus:bg-white/10 transition-all font-inter cursor-pointer disabled:opacity-50"
+          className="lead-select bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white outline-none focus:border-accent focus:bg-white/10 transition-all font-body cursor-pointer disabled:opacity-50"
         >
           <option value="">Selecione...</option>
           <option value="tem_total">Já tenho o valor total disponível</option>
@@ -158,7 +158,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
           placeholder="Pode escrever à vontade..."
           rows={4}
           disabled={isLoading}
-          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-inter resize-y disabled:opacity-50"
+          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-body resize-y disabled:opacity-50"
         />
       </div>
 
@@ -166,7 +166,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="mt-6 w-full bg-accent text-white rounded-[10px] py-[18px] text-base font-semibold cursor-pointer transition-all hover:bg-accent-dark hover:-translate-y-0.5 font-inter disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+          className="mt-6 w-full bg-accent text-white rounded-[10px] py-[18px] text-base font-semibold cursor-pointer transition-all hover:bg-accent-dark hover:-translate-y-0.5 font-body disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
         >
           {isLoading ? "Enviando..." : "Dê o primeiro passo →"}
         </button>
