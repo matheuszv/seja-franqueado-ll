@@ -10,8 +10,8 @@
   --color-muted:         #6b6560;
   --color-border:        #e2ddd7;
 
-  --font-fraunces: var(--font-fraunces);
-  --font-inter:    var(--font-inter);
+  --font-heading: var(--font-poppins);
+  --font-body:    var(--font-poppins);
 }
 
 *, *::before, *::after {
@@ -25,7 +25,7 @@ html {
 body {
   background: #fafaf8;
   color: #1a1712;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-poppins), system-ui, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -39,16 +39,13 @@ body {
   pointer-events: none;
 }
 
-/* Scrollbar styling for the fotos carousel */
+/* Hide native scrollbar for the fotos carousel (controlled via arrow buttons) */
+.fotos-carousel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 .fotos-carousel::-webkit-scrollbar {
-  height: 4px;
-}
-.fotos-carousel::-webkit-scrollbar-track {
-  background: transparent;
-}
-.fotos-carousel::-webkit-scrollbar-thumb {
-  background: #c9913a;
-  border-radius: 4px;
+  display: none;
 }
 
 /* FAQ arrow rotation */

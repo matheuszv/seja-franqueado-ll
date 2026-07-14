@@ -3,8 +3,11 @@ import FotosCarousel from "@/app/components/FotosCarousel";
 import LazyVideo from "@/app/components/LazyVideo";
 
 
+// Logo
+import logoLembreLembre from '@/public/assets/logo-lembre-lembre-branco.png';
+
 // Importações das Fotos
-import fotoDR309194 from '@/public/assets/FOTOS/DR309194.jpg';
+import fotoDR309194 from '@/public/assets/FOTOS/hero-gyullyanna-wylliam.jpg';
 import fotoEvento1 from '@/public/assets/FOTOS/evento-1.jpg';
 import fotoEvento2 from '@/public/assets/FOTOS/evento-2.jpg';
 import fotoLouJose53 from '@/public/assets/FOTOS/Lembre-Lembre-LouJose-53.jpg';
@@ -37,31 +40,19 @@ const fotosCarrosel = [
 export default function Home() {
   return (
     <>
-      {/* ── NAV ── */}
-      <nav className="sticky top-0 z-100 bg-[rgba(250,250,248,.92)] backdrop-blur-[14px] border-b border-border">
-        <div className="max-w-[1120px] mx-auto px-7 h-[68px] flex items-center justify-between">
-          <a href="#" className="font-fraunces text-[1rem] sm:text-[1.25rem] font-bold tracking-[-0.03em] text-bg3 no-underline">
-            Lembre<span className="text-accent">-</span>Lembre
-          </a>
-          <a
-            href="#primeiro-passo"
-            className="bg-bg3 text-white border-none rounded-lg px-[16px] sm:px-[22px] py-[8px] sm:py-[10px] text-[.75rem] sm:text-[.85rem] font-semibold cursor-pointer no-underline transition-all hover:bg-[#333] hover:-translate-y-px"
-          >
-            Dê o primeiro passo
-          </a>
-        </div>
-      </nav>
-
       {/* ── HERO ── */}
       <section className="hero-gradient bg-bg3 text-white py-[110px] pb-[100px] relative overflow-hidden">
-        <div className="max-w-[1120px] mx-auto px-7 grid grid-cols-[1fr_460px] gap-[72px] items-center max-[960px]:grid-cols-1">
+        <div className="relative max-w-[1120px] mx-auto px-7 grid grid-cols-[1fr_460px] gap-[72px] items-center max-[960px]:grid-cols-1">
+          <a href="#" className="absolute top-[55px] right-7 z-10 no-underline max-[960px]:right-5">
+            <img src={logoLembreLembre.src} alt="Lembre-Lembre" className="h-[115px] max-[960px]:h-[72px] w-auto object-contain block" />
+          </a>
           <div>
             <div className="inline-flex items-center gap-2 bg-[rgba(201,145,58,.15)] border border-[rgba(201,145,58,.35)] rounded-[30px] px-4 py-[5px] text-[.74rem] font-semibold tracking-widest uppercase text-[#e8b86d] mb-6 before:content-['✦'] before:text-[.65rem]">
               Oportunidade de Franquia
             </div>
-            <h1 className="font-fraunces text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white mb-[22px]">
+            <h1 className="font-heading text-[clamp(2.4rem,4.5vw,3.6rem)] font-normal leading-[1.15] tracking-[-0.02em] text-white mb-[22px]">
               Realize o sonho de ter{" "}
-              <em className="italic text-[#e8b86d]">seu próprio negócio</em> com a Lembre-Lembre
+              <em className="italic font-bold text-[#e8b86d]">seu próprio negócio</em> com a Lembre-Lembre
             </h1>
             <p className="text-[1.05rem] text-white/65 max-w-[520px] leading-[1.7] mb-[38px]">
               Faça parte da maior rede de franquias de foto instantânea do Brasil e transforme
@@ -86,28 +77,23 @@ export default function Home() {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-8 flex-wrap mt-12 pt-10 border-t border-white/10">
-              <div>
-                <div className="font-fraunces text-[2rem] font-bold text-[#e8b86d]">63</div>
-                <div className="text-[.75rem] text-white/55 mt-0.5 uppercase tracking-[.06em]">Franquias ativas</div>
-              </div>
-              <div>
-                <div className="font-fraunces text-[1.5rem] font-bold text-[#e8b86d]">ATÉ 80%</div>
-                <div className="text-[.75rem] text-white/55 mt-0.5 uppercase tracking-[.06em]">Lucro por evento</div>
-              </div>
-              <div>
-                <div className="font-fraunces text-[2rem] font-bold text-[#e8b86d]">&lt;12m</div>
-                <div className="text-[.75rem] text-white/55 mt-0.5 uppercase tracking-[.06em]">Retorno do investimento</div>
-              </div>
-              <div>
-                <div className="font-fraunces text-[2rem] font-bold text-[#e8b86d]">13</div>
-                <div className="text-[.75rem] text-white/55 mt-0.5 uppercase tracking-[.06em]">Anos de experiência</div>
-              </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 mt-12 pt-10 border-t border-white/10">
+              {[
+                { value: <><span className="text-[1.4rem]">até</span> 80%</>, label: "Lucro por evento" },
+                { value: "<12m", label: "Retorno do investimento" },
+                { value: "63", label: "Franquias ativas" },
+                { value: "13", label: "Anos de experiência" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="font-heading text-[1.7rem] font-bold text-[#e8b86d] whitespace-nowrap">{stat.value}</div>
+                  <div className="text-[.75rem] text-white/55 mt-1 uppercase tracking-[.06em]">{stat.label}</div>
+                </div>
+              ))}
             </div>
 
             {/* Investment card */}
             <div className="mt-8 bg-[rgba(201,145,58,.12)] border border-[rgba(201,145,58,.3)] rounded-xl px-7 py-5 inline-flex items-center gap-4 max-[600px]:flex-col max-[600px]:gap-2">
-              <div className="font-fraunces text-[2rem] font-bold text-[#e8b86d]">R$ 51.950</div>
+              <div className="font-heading text-[2rem] font-bold text-[#e8b86d]">R$ 51.950</div>
               <div className="text-[.82rem] text-white/60 leading-normal">
                 Investimento inicial completo<br />
                 <span className="text-white/40">Inclui equipamento, treinamento e suporte</span>
@@ -116,19 +102,21 @@ export default function Home() {
           </div>
 
           {/* Hero photo */}
-          <div className="relative max-[960px]:hidden">
-            <img
-              src={fotoDR309194.src}
-              alt="Convidados celebrando com foto-lembrança Lembre-Lembre"
-              className="w-full rounded-[20px] object-cover aspect-4/5 block shadow-[0_24px_64px_rgba(0,0,0,.5)]"
-            />
-            <div className="absolute top-4 left-4 bg-[rgba(26,23,18,.82)] backdrop-blur-[10px] border border-white/14 text-white rounded-[30px] py-2 px-4 text-[.78rem] font-medium flex gap-2 items-center">
-              📸 Foto-lembrança física em menos de 60 segundos
+          <div className="max-[960px]:hidden mt-[166px]">
+            <div className="relative">
+              <img
+                src={fotoDR309194.src}
+                alt="Convidados celebrando com foto-lembrança Lembre-Lembre"
+                className="w-full rounded-[20px] object-cover aspect-4/5 block shadow-[0_24px_64px_rgba(0,0,0,.5)]"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-accent text-white rounded-[14px] px-[22px] py-[18px] text-center shadow-[0_10px_28px_rgba(201,145,58,.45)]">
+                <div className="font-heading text-[1.7rem] font-bold leading-none">Até R$450k</div>
+                <div className="text-[.68rem] opacity-85 mt-1">de faturamento por ano*</div>
+              </div>
             </div>
-            <div className="absolute -bottom-4 -right-4 bg-accent text-white rounded-[14px] px-[22px] py-[18px] text-center shadow-[0_10px_28px_rgba(201,145,58,.45)]">
-              <div className="font-fraunces text-[1.7rem] font-bold leading-none">+R$450k</div>
-              <div className="text-[.68rem] opacity-85 mt-1">faturamento pode chegar/ano</div>
-            </div>
+            <p className="text-[.68rem] text-white/30 mt-6 text-right">
+              *Baseado em números reais da rede - o resultado depende do potencial da região e do desempenho individual do franqueado.
+            </p>
           </div>
         </div>
       </section>
@@ -136,10 +124,9 @@ export default function Home() {
       {/* ── PROOF BAR ── */}
       <div className="bg-white border-b border-border py-[22px]">
         <div className="max-w-[1120px] mx-auto px-7 flex items-center gap-10 flex-wrap justify-center">
-          <span className="text-[.72rem] uppercase tracking-widest text-muted font-semibold">Presente em</span>
           <div className="flex items-center gap-2 text-[.82rem] font-medium text-muted">
             <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0 inline-block" />
-            3 países
+            Presente em 3 países
           </div>
           <div className="w-px h-5 bg-border" />
           <div className="flex items-center gap-2 text-[.82rem] font-medium text-muted">
@@ -166,7 +153,7 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Seja dono do seu negócio
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
               Dê o primeiro passo agora
             </h2>
             <p className="text-base text-white/55 max-w-[560px] mx-auto leading-[1.75]">
@@ -187,7 +174,7 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Depoimentos reais
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
               Quem já faz parte<br />da rede Lembre-Lembre
             </h2>
           </div>
@@ -218,8 +205,8 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Nossos números
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
-              Resultados que falam <br />por si mesmos
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
+              Resultados que falam <br />por si só
             </h2>
             <p className="text-base text-muted max-w-[560px] mx-auto leading-[1.75]">
               Mais de uma década transformando momentos em memórias, e transformando
@@ -234,7 +221,7 @@ export default function Home() {
               { value: "12", label: "Meses em média para recuperar o investimento" },
             ].map((item, i) => (
               <div key={i} className="bg-white px-8 py-10 flex flex-col items-center text-center">
-                <div className="font-fraunces sm:text-[2.8rem] font-bold text-accent leading-none mb-2.5 text-[2.4rem]">{item.value}</div>
+                <div className="font-heading sm:text-[2.8rem] font-bold text-accent leading-none mb-2.5 text-[2.4rem]">{item.value}</div>
                 <div className="text-[.82rem] text-muted leading-normal max-w-[140px]">{item.label}</div>
               </div>
             ))}
@@ -249,7 +236,7 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Como funciona
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
               Um negócio com operação simples<br />e potencial real de crescimento
             </h2>
             <p className="text-base text-muted max-w-[560px] mx-auto leading-[1.75]">
@@ -288,10 +275,10 @@ export default function Home() {
                   className="w-full aspect-3/2 object-cover block brightness-90 group-hover:brightness-100 transition-all duration-300"
                 />
                 <div className="p-7 pb-8">
-                  <div className="w-9 h-9 rounded-full bg-accent-light text-accent font-fraunces text-[.95rem] font-bold flex items-center justify-center mb-4">
+                  <div className="w-9 h-9 rounded-full bg-accent-light text-accent font-heading text-[.95rem] font-bold flex items-center justify-center mb-4">
                     {step.num}
                   </div>
-                  <h3 className="font-fraunces text-[1.05rem] font-semibold mb-2.5">{step.title}</h3>
+                  <h3 className="font-heading text-[1.05rem] font-semibold mb-2.5">{step.title}</h3>
                   <p className="text-[.85rem] text-muted leading-[1.7]">{step.desc}</p>
                 </div>
               </div>
@@ -307,7 +294,7 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Por que a Lembre-Lembre
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
               Tudo que você recebe quando<br />se torna um franqueado
             </h2>
             <p className="text-base text-white/55 max-w-[560px] mx-auto leading-[1.75]">
@@ -320,10 +307,10 @@ export default function Home() {
               { icon: "📚", title: "Treinamento completo", desc: "Capacitação inicial e suporte contínuo. Não precisa saber nada de fotografia para começar." },
               { icon: "📱", title: "Plataforma de gestão", desc: "Sistema de gestão de contratos e clientes." },
               { icon: "🎨", title: "Material de marketing", desc: "Arte, identidade visual e materiais prontos para você usar. Sem precisar contratar designer ou agência." },
-              { icon: "📅", title: "Negócio de fim de semana", desc: "A maioria dos eventos é sexta, sábado ou domingo. Ideal para quem ainda trabalha na semana." },
+              { icon: "📅", title: "Negócio de fim de semana", desc: "A maioria dos eventos acontece nos finais de semana. Ideal para quem quer fazer uma transição de carreira." },
               { icon: "🌍", title: "Uma rede que cresce junto", desc: "Comunidade ativa de empreendedores no Brasil e em Portugal, com troca de experiências e benchmarks reais." },
               { icon: "💼", title: "Zero funcionário obrigatório", desc: "Você pode operar sozinho. Sem encargos trabalhistas, sem folha de pagamento para gerir desde o primeiro dia." },
-              { icon: "🏠", title: "Sem aluguel fixo", desc: "Não precisa de ponto comercial. Seu estúdio vai ao cliente — em qualquer salão de festas, buffet ou espaço de eventos." },
+              { icon: "🏠", title: "Sem aluguel fixo", desc: "Não precisa de ponto comercial. Seu estúdio vai ao cliente em qualquer salão de festas, buffet ou espaço de eventos." },
             ].map((item, i) => (
               <div
                 key={i}
@@ -353,7 +340,7 @@ export default function Home() {
                 className="w-full rounded-[20px] object-cover aspect-3/4 block shadow-[0_20px_56px_rgba(0,0,0,.1)]"
               />
               <div className="absolute -bottom-5 -right-5 bg-accent text-white rounded-[16px] px-6 py-5 text-center shadow-[0_12px_32px_rgba(201,145,58,.35)]">
-                <div className="font-fraunces text-[1.9rem] font-bold">12+</div>
+                <div className="font-heading text-[1.9rem] font-bold">12+</div>
                 <div className="text-[.72rem] opacity-85 mt-0.5">anos de mercado</div>
               </div>
             </div>
@@ -361,7 +348,7 @@ export default function Home() {
               <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
                 Nossa história
               </span>
-              <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
+              <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
                 Nasceu no Brasil.<br />Cresce pelo mundo.
               </h2>
               <p className="text-[.95rem] text-muted leading-[1.8] mb-4">
@@ -393,7 +380,7 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Mais depoimentos
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
               Mais histórias de<br />quem acreditou no modelo
             </h2>
           </div>
@@ -420,7 +407,7 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Dúvidas frequentes
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] mb-[18px]">
               Perguntas que a gente<br />recebe todo dia
             </h2>
           </div>
@@ -472,7 +459,7 @@ export default function Home() {
             <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
               Candidatura
             </span>
-            <h2 className="font-fraunces text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
               Dê o primeiro passo<br />agora mesmo
             </h2>
             <p className="text-base text-white/55 max-w-[560px] mx-auto leading-[1.75]">
@@ -488,10 +475,8 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <footer className="bg-[#111009] text-white/45 py-14 pb-10 border-t border-white/6">
-        <div className="max-w-[1120px] mx-auto px-7 flex items-center justify-between flex-wrap gap-5">
-          <div className="font-fraunces text-[1.1rem] font-bold text-white/70">
-            Lembre<span className="text-accent">-</span>Lembre
-          </div>
+        <div className="max-w-[1120px] mx-auto px-7 flex items-end justify-between flex-wrap gap-5">
+          <img src={logoLembreLembre.src} alt="Lembre-Lembre" className="h-16 w-auto object-contain block opacity-70" />
           <div className="flex gap-6">
             <a href="https://lembrelembre.com.br" target="_blank" rel="noopener noreferrer" className="text-[.82rem] text-white/40 no-underline transition-colors hover:text-white/75">
               Site oficial
@@ -505,7 +490,7 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-[1120px] mx-auto px-7">
-          <p className="text-[.78rem] text-center pt-7 border-t border-white/5 mt-3">
+          <p className="text-[.78rem] text-center pt-7 border-t border-white/5 mt-[32px]">
             © 2026 Lembre-Lembre Franchising. Todos os direitos reservados.
             Fundada em João Pessoa, PB. Presente em Brasil e Portugal.
           </p>
