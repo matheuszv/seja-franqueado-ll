@@ -8,6 +8,7 @@ import logoLembreLembre from '@/public/assets/logo-lembre-lembre-branco.png';
 
 // Importações das Fotos
 import fotoDR309194 from '@/public/assets/FOTOS/hero-gyullyanna-wylliam.jpg';
+import fotoHeroMobile from '@/public/assets/FOTOS/hero-mobile-top.jpg';
 import fotoEvento1 from '@/public/assets/FOTOS/evento-1.jpg';
 import fotoEvento2 from '@/public/assets/FOTOS/evento-2.jpg';
 import fotoLouJose53 from '@/public/assets/FOTOS/Lembre-Lembre-LouJose-53.jpg';
@@ -40,11 +41,19 @@ const fotosCarrosel = [
 export default function Home() {
   return (
     <>
+      {/* Foto horizontal (topo, apenas mobile) */}
+      <img
+        src={fotoHeroMobile.src}
+        alt="Convidados se divertindo na cabine Lembre-Lembre"
+        className="hidden max-[960px]:block w-full h-auto"
+      />
+
       {/* ── HERO ── */}
-      <section className="hero-gradient bg-bg3 text-white py-[110px] pb-[100px] relative overflow-hidden">
+      <section className="hero-gradient bg-bg3 text-white py-[110px] pb-[100px] max-[960px]:pt-[37px] relative overflow-hidden">
         <div className="relative max-w-[1120px] mx-auto px-7 grid grid-cols-[1fr_460px] gap-[72px] items-center max-[960px]:grid-cols-1">
-          <a href="#" className="absolute top-[55px] right-7 z-10 no-underline max-[960px]:right-5">
-            <img src={logoLembreLembre.src} alt="Lembre-Lembre" className="h-[115px] max-[960px]:h-[72px] w-auto object-contain block" />
+          {/* Logo (desktop: aligned with photo, top-right) */}
+          <a href="#" className="absolute top-[55px] right-7 z-10 no-underline max-[960px]:hidden">
+            <img src={logoLembreLembre.src} alt="Lembre-Lembre" className="h-[115px] w-auto object-contain block" />
           </a>
           <div>
             <div className="inline-flex items-center gap-2 bg-[rgba(201,145,58,.15)] border border-[rgba(201,145,58,.35)] rounded-[30px] px-4 py-[5px] text-[.74rem] font-semibold tracking-widest uppercase text-[#e8b86d] mb-6 before:content-['✦'] before:text-[.65rem]">
@@ -101,8 +110,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero photo */}
-          <div className="max-[960px]:hidden mt-[166px]">
+          {/* Hero photo (desktop only) */}
+          <div className="mt-[166px] max-[960px]:hidden">
             <div className="relative">
               <img
                 src={fotoDR309194.src}
