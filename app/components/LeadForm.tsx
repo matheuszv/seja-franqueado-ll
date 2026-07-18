@@ -68,9 +68,9 @@ export default function LeadForm({ formId }: LeadFormProps) {
   const isLoading = state.status === "loading";
 
   return (
-    <form id={formId} onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+    <form id={formId} onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {state.status === "error" && state.message && (
-        <div className="col-span-2 bg-red-500/20 border border-red-500/40 rounded-lg px-4 py-3 text-red-300 text-sm">
+        <div className="sm:col-span-2 bg-red-500/20 border border-red-500/40 rounded-lg px-4 py-3 text-red-300 text-sm">
           {state.message}
         </div>
       )}
@@ -131,7 +131,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
         />
       </div>
 
-      <div className="col-span-2 flex flex-col gap-[7px]">
+      <div className="sm:col-span-2 flex flex-col gap-[7px]">
         <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           Sua situação em relação ao investimento de R$ 51.950
         </label>
@@ -149,7 +149,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
         </select>
       </div>
 
-      <div className="col-span-2 flex flex-col gap-[7px]">
+      <div className="sm:col-span-2 flex flex-col gap-[7px]">
         <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
           Alguma mensagem ou dúvida? (opcional)
         </label>
@@ -162,7 +162,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
         />
       </div>
 
-      <div className="col-span-2">
+      <div className="sm:col-span-2">
         <button
           type="submit"
           disabled={isLoading}
