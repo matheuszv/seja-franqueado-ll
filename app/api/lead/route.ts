@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import crypto from "crypto";
+
+// Variáveis de ambiente necessárias no servidor (nunca commitar no repositório):
+//   META_PIXEL_ID    — ID do Pixel Meta (Site-LL)
+//   META_CAPI_TOKEN  — token de acesso da Conversions API, enviado por canal separado
 
 const capitalLabels: Record<string, string> = {
   tem_total: "Já tem o valor total disponível",
@@ -7,6 +12,89 @@ const capitalLabels: Record<string, string> = {
   financiamento: "Precisa de financiamento / parcelamento",
   sem_capital: "Ainda não tem o valor no momento",
 };
+
+// --- Normalização + hash SHA-256 (exigência da Meta para user_data) ---
+const sha256 = (v: string) => crypto.createHash("sha256").update(v).digest("hex");
+
+const hashField = (v?: string | null) =>
+  v && v.trim() ? [sha256(v.trim().toLowerCase())] : undefined;
+
+// Telefone BR: apenas dígitos, com DDI 55 na frente
+const hashPhone = (v?: string | null) => {
+  if (!v) return undefined;
+  let d = v.replace(/\D/g, "");
+  if (!d) return undefined;
+  if (!d.startsWith("55")) d = "55" + d;
+  return [sha256(d)];
+};
+
+async function sendToConversionsApi(req: NextRequest, body: Record<string, string>) {
+  const pixelId = process.env.META_PIXEL_ID;
+  const token = process.env.META_CAPI_TOKEN;
+
+  if (!pixelId || !token) {
+    console.error("META_PIXEL_ID ou META_CAPI_TOKEN não configurados — evento CAPI não enviado.");
+    return;
+  }
+
+  const cookies = req.headers.get("cookie") ?? "";
+  const fbp = /_fbp=([^;]+)/.exec(cookies)?.[1];
+  const fbc = /_fbc=([^;]+)/.exec(cookies)?.[1];
+
+  // Separar nome/sobrenome do campo "nome completo"
+  const partes = (body.name ?? "").trim().split(/\s+/);
+  const firstName = partes[0];
+  const lastName = partes.length > 1 ? partes[partes.length - 1] : undefined;
+
+  // "Cidade / Estado" → tentar separar por "/", "-" ou ","
+  const [cidade, estado] = (body.city ?? "").split(/[/\-,]/).map((s) => s.trim());
+
+  const payload = {
+    data: [
+      {
+        event_name: "Lead",
+        event_time: Math.floor(Date.now() / 1000),
+        event_id: body.event_id, // MESMO id do browser (deduplicação)
+        event_source_url: body.page_url ?? "https://seja.franquialembrelembre.com.br/",
+        action_source: "website",
+        user_data: {
+          em: hashField(body.email),
+          ph: hashPhone(body.phone),
+          fn: hashField(firstName),
+          ln: hashField(lastName),
+          ct: hashField(cidade?.replace(/\s/g, "")),
+          st: hashField(estado),
+          country: [sha256("br")],
+          client_ip_address: req.headers.get("x-forwarded-for")?.split(",")[0]?.trim(),
+          client_user_agent: req.headers.get("user-agent") ?? undefined,
+          fbp: fbp || undefined,
+          fbc: fbc || undefined,
+        },
+        custom_data: {
+          content_name: "Formulario Franquia LP",
+          situacao_investimento: body.capital ?? undefined,
+        },
+      },
+    ],
+    // Descomentar apenas durante os testes de validação com a equipe de tráfego:
+    // test_event_code: "TESTXXXXX",
+  };
+
+  try {
+    const r = await fetch(
+      `https://graph.facebook.com/v23.0/${pixelId}/events?access_token=${token}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    );
+    if (!r.ok) console.error("CAPI error:", await r.text());
+  } catch (e) {
+    // Falha na CAPI NÃO deve derrubar o envio do lead.
+    console.error("CAPI request failed:", e);
+  }
+}
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -60,6 +148,8 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    await sendToConversionsApi(req, body as Record<string, string>);
 
     return NextResponse.json({ success: true, name: name.trim() });
   } catch (err) {

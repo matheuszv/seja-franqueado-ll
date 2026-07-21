@@ -2,6 +2,27 @@
 
 import { useState } from "react";
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
+// Compartilhado entre as duas instâncias do formulário (topo e rodapé):
+// garante no máximo 1 evento FormStart por carregamento de página.
+let formStartFired = false;
+
+function pushDataLayer(event: Record<string, unknown>) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(event);
+}
+
+function generateEventId() {
+  return typeof crypto !== "undefined" && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 interface FormState {
@@ -17,11 +38,19 @@ interface LeadFormProps {
 export default function LeadForm({ formId }: LeadFormProps) {
   const [state, setState] = useState<FormState>({ status: "idle" });
 
+  function handleFormStart() {
+    if (formStartFired) return;
+    formStartFired = true;
+    pushDataLayer({ event: "form_start" });
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState({ status: "loading" });
 
     const form = e.currentTarget;
+    // Gerado antes do envio: é a chave de deduplicação entre o Pixel (browser) e a CAPI (servidor).
+    const eventId = generateEventId();
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value.trim(),
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value.trim(),
@@ -29,6 +58,8 @@ export default function LeadForm({ formId }: LeadFormProps) {
       city: (form.elements.namedItem("city") as HTMLInputElement).value.trim(),
       capital: (form.elements.namedItem("capital") as HTMLSelectElement).value,
       msg: (form.elements.namedItem("msg") as HTMLTextAreaElement).value.trim(),
+      event_id: eventId,
+      page_url: window.location.href,
     };
 
     try {
@@ -43,6 +74,9 @@ export default function LeadForm({ formId }: LeadFormProps) {
       if (!res.ok) {
         setState({ status: "error", message: json.error ?? "Erro ao enviar. Tente novamente." });
       } else {
+        // Só dispara após a confirmação de sucesso do backend, com o mesmo event_id
+        // usado na chamada à Conversions API — é o que permite a deduplicação no Meta.
+        pushDataLayer({ event: "form_submit_franquia", event_id: eventId });
         setState({ status: "success", name: json.name });
       }
     } catch {
@@ -68,7 +102,12 @@ export default function LeadForm({ formId }: LeadFormProps) {
   const isLoading = state.status === "loading";
 
   return (
-    <form id={formId} onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form
+      id={formId}
+      onSubmit={handleSubmit}
+      onFocus={handleFormStart}
+      className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+    >
       {state.status === "error" && state.message && (
         <div className="sm:col-span-2 bg-red-500/20 border border-red-500/40 rounded-lg px-4 py-3 text-red-300 text-sm">
           {state.message}
