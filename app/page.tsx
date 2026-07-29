@@ -8,8 +8,8 @@ import logoLembreLembre from '@/public/assets/logo-lembre-lembre-branco.png';
 
 // Selos e mídia
 import seloPegn from '@/public/assets/selo-pegn.png';
-import seloAbf from '@/public/assets/selo-abf.png';
-import fotoSocios from '@/public/assets/socios-lembre-lembre.jpg';
+import seloAbf from '@/public/assets/selo-abf-vertical.jpg';
+import fotoMateriaPegn from '@/public/assets/pegn-materia-print.jpg';
 
 // Importações das Fotos
 import fotoDR309194 from '@/public/assets/FOTOS/hero-gyullyanna-wylliam.jpg';
@@ -243,6 +243,61 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── RECONHECIMENTO ── */}
+      <section className="py-24 bg-bg3 text-white">
+        <div className="max-w-[1120px] mx-auto px-7">
+          <div className="text-center">
+            <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
+              Reconhecimento
+            </span>
+            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
+              Uma marca validada<br />pelo mercado
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-[1.2fr_1fr] gap-12 mt-14 items-center max-[900px]:grid-cols-1">
+            <a
+              href="https://revistapegn.globo.com/franquias/noticia/2025/08/casal-paraibano-fatura-r-36-milhoes-com-negocio-de-foto-lembranca-para-eventos-inspirado-em-conceito-retro.ghtml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block no-underline"
+            >
+              <img
+                src={fotoMateriaPegn.src}
+                alt="Matéria da PEGN: Casal paraibano cria negócio de foto-lembrança para eventos inspirado em conceito retrô que fatura R$ 3,6 mi"
+                className="w-full rounded-2xl object-cover shadow-[0_20px_56px_rgba(0,0,0,.35)] transition-all hover:-translate-y-1"
+              />
+              <span className="text-accent text-[.85rem] font-semibold mt-4 inline-block">
+                Ler matéria completa →
+              </span>
+            </a>
+
+            <div className="flex flex-col gap-9">
+              <div className="flex items-start gap-5">
+                <img
+                  src={seloPegn.src}
+                  alt="Selo Pequenas Empresas Grandes Negócios — Melhores Franquias"
+                  className="w-16 h-auto object-contain shrink-0"
+                />
+                <p className="text-[.85rem] text-white/60 leading-[1.7]">
+                  Recebemos o selo 4 estrelas de Melhores Franquias, do ranking da Pequenas Empresas &amp; Grandes Negócios — um reconhecimento dado pelos próprios franqueados, que avaliam suporte, rentabilidade e solidez da rede.
+                </p>
+              </div>
+              <div className="flex items-start gap-5">
+                <img
+                  src={seloAbf.src}
+                  alt="Selo Associação Brasileira de Franchising (ABF)"
+                  className="w-16 h-auto object-contain shrink-0"
+                />
+                <p className="text-[.85rem] text-white/60 leading-[1.7]">
+                  Somos uma franquia associada à ABF (Associação Brasileira de Franchising). Isso significa que nossos contratos passam por revisão e por todo um processo de validação da associação — mais segurança jurídica pra quem vai investir.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── COMO FUNCIONA ── */}
       <section id="como-funciona" className="py-24 bg-bg">
         <div className="max-w-[1120px] mx-auto px-7">
@@ -384,55 +439,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── RECONHECIMENTO ── */}
-      <section className="py-24 bg-bg3 text-white">
-        <div className="max-w-[1120px] mx-auto px-7">
-          <div className="text-center">
-            <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
-              Reconhecimento
-            </span>
-            <h2 className="font-heading text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white mb-[18px]">
-              Uma marca validada<br />pelo mercado
-            </h2>
-          </div>
-
-          <div className="flex items-center justify-center gap-16 mt-14 flex-wrap">
-            <img
-              src={seloPegn.src}
-              alt="Selo Pequenas Empresas Grandes Negócios — Melhores Franquias"
-              className="h-24 w-auto object-contain"
-            />
-            <img
-              src={seloAbf.src}
-              alt="Selo Associação Brasileira de Franchising (ABF)"
-              className="h-24 w-auto object-contain"
-            />
-          </div>
-
-          <a
-            href="https://revistapegn.globo.com/franquias/noticia/2025/08/casal-paraibano-fatura-r-36-milhoes-com-negocio-de-foto-lembranca-para-eventos-inspirado-em-conceito-retro.ghtml"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-14 flex items-stretch gap-6 bg-white border border-border rounded-[20px] overflow-hidden no-underline text-[#1a1712] max-w-[720px] mx-auto transition-all hover:shadow-[0_20px_56px_rgba(0,0,0,.09)] hover:-translate-y-1 max-[600px]:flex-col"
-          >
-            <img
-              src={fotoSocios.src}
-              alt="Camilla Mayer e Deivid Ribeiro, sócios da Lembre-Lembre"
-              className="w-[220px] shrink-0 object-cover max-[600px]:w-full max-[600px]:h-[180px]"
-            />
-            <div className="py-6 pr-7 pl-1 flex flex-col justify-center max-[600px]:px-6 max-[600px]:pb-6">
-              <span className="text-[.7rem] font-bold uppercase tracking-[.08em] text-muted mb-2 block">
-                Empresas &amp; Negócios (PEGN)
-              </span>
-              <h3 className="font-heading text-[1.05rem] font-semibold leading-snug mb-2">
-                Casal paraibano cria negócio de foto-lembrança para eventos inspirado em conceito retrô que fatura R$ 3,6 mi
-              </h3>
-              <span className="text-accent text-[.85rem] font-semibold">Ler matéria completa →</span>
-            </div>
-          </a>
         </div>
       </section>
 
