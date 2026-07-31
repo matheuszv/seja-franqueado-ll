@@ -7,7 +7,7 @@ import LazyVideo from "@/app/components/LazyVideo";
 import logoLembreLembre from '@/public/assets/logo-lembre-lembre-branco.png';
 
 // Selos e mídia
-import seloPegn from '@/public/assets/selo-pegn.png';
+import seloPegn from '@/public/assets/selo-pegn-2026.jpg';
 import seloAbf from '@/public/assets/selo-abf-vertical.jpg';
 import fotoMateriaPegn from '@/public/assets/pegn-materia-print.jpg';
 
