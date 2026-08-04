@@ -71,8 +71,8 @@ export default function Home() {
             <p className="text-[1.05rem] text-white/65 max-w-[520px] leading-[1.7] mb-[38px]">
               Faça parte da maior rede de franquias de foto instantânea do Brasil e transforme
               momentos especiais em uma fonte real de renda. Com mais de{" "}
-              <strong className="text-[#e8b86d]">63 franquias</strong> ao redor do mundo e{" "}
-              <strong className="text-[#e8b86d]">R$6,9 milhões faturados</strong> no último ano,
+              <strong className="text-[#e8b86d]">68 franquias</strong> ao redor do mundo e{" "}
+              <strong className="text-[#e8b86d]">R$6,9 milhões faturados</strong> em 2025,
               a LL oferece um modelo acessível, escalável e possível de encaixar na sua rotina.
             </p>
             <div className="flex gap-3.5 flex-wrap">
@@ -93,9 +93,9 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 mt-12 pt-10 border-t border-white/10">
               {[
-                { value: <><span className="text-[1.4rem]">até</span> 80%</>, label: "Lucro por evento" },
+                { value: <><span className="text-[1.4rem]">até</span> 70%</>, label: "Lucro por evento" },
                 { value: "<12m", label: "Retorno do investimento" },
-                { value: "63", label: "Franquias ativas" },
+                { value: "68", label: "Franquias ativas" },
                 { value: "13", label: "Anos de experiência" },
               ].map((stat) => (
                 <div key={stat.label}>
@@ -110,7 +110,7 @@ export default function Home() {
               <div className="font-heading text-[2rem] font-bold text-[#e8b86d]">R$ 51.950</div>
               <div className="text-[.82rem] text-white/60 leading-normal">
                 Investimento inicial completo<br />
-                <span className="text-white/40">Inclui equipamento, treinamento e suporte</span>
+                <span className="text-white/40">Inclui estrutura completa, equipamentos, capital de giro, treinamento e suporte</span>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function Home() {
           <div className="w-px h-5 bg-border" />
           <div className="flex items-center gap-2 text-[.82rem] font-medium text-muted">
             <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0 inline-block" />
-            63 unidades ativas
+            68 unidades ativas
           </div>
           <div className="w-px h-5 bg-border" />
           <div className="flex items-center gap-2 text-[.82rem] font-medium text-muted">
@@ -229,9 +229,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-4 gap-px mt-14 rounded-xl overflow-hidden border border-border max-[960px]:grid-cols-2 max-[600px]:grid-cols-2">
             {[
-              { value: "63", label: "Franquias ativas ao redor do mundo" },
-              { value: "R$6,9M", label: "Faturamento da rede no último ano" },
-              { value: "80%", label: "Margem de lucro por evento realizado" },
+              { value: "68", label: "Franquias ativas ao redor do mundo" },
+              { value: "R$6,9M", label: "Faturamento da rede em 2025" },
+              { value: "70%", label: "Margem de lucro por evento realizado" },
               { value: "12", label: "Meses em média para recuperar o investimento" },
             ].map((item, i) => (
               <div key={i} className="bg-white px-8 py-10 flex flex-col items-center text-center">
@@ -324,7 +324,7 @@ export default function Home() {
               {
                 num: "02",
                 img: fotoEvento2.src,
-                title: "Leva o equipamento ao evento",
+                title: "Leva o Lembre-Lembre ao evento",
                 desc: "A estrutura é compacta, portátil e cabe em qualquer carro. A operação foi pensada para ser prática, sem necessidade de escritório, depósito ou logística complexa.",
               },
               {
@@ -372,14 +372,14 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-px mt-14 rounded-xl overflow-hidden max-[960px]:grid-cols-1">
             {[
-              { icon: "🚀", title: "Infraestrutura pronta", desc: "Toda a operação já foi estruturada e testada. Você entra em um modelo validado com mais de 10 anos de mercado." },
+              { icon: "🚀", title: "Infraestrutura pronta", desc: "Toda a operação já foi estruturada e testada. Você entra em um modelo validado com 13 anos de mercado." },
               { icon: "📚", title: "Treinamento completo", desc: "Capacitação inicial e suporte contínuo. Não precisa saber nada de fotografia para começar." },
-              { icon: "📱", title: "Plataforma de gestão", desc: "Sistema de gestão de contratos e clientes." },
+              { icon: "📱", title: "Plataforma de gestão", desc: "Sistema de gestão da franquia para facilitar seu dia-a-dia." },
               { icon: "🎨", title: "Material de marketing", desc: "Arte, identidade visual e materiais prontos para você usar. Sem precisar contratar designer ou agência." },
               { icon: "📅", title: "Negócio de fim de semana", desc: "A maioria dos eventos acontece nos finais de semana. Ideal para quem quer fazer uma transição de carreira." },
-              { icon: "🌍", title: "Uma rede que cresce junto", desc: "Comunidade ativa de empreendedores no Brasil e em Portugal, com troca de experiências e benchmarks reais." },
-              { icon: "💼", title: "Zero funcionário obrigatório", desc: "Você pode operar sozinho. Sem encargos trabalhistas, sem folha de pagamento para gerir desde o primeiro dia." },
-              { icon: "🏠", title: "Sem aluguel fixo", desc: "Não precisa de ponto comercial. Seu estúdio vai ao cliente em qualquer salão de festas, buffet ou espaço de eventos." },
+              { icon: "🌍", title: "Uma rede que cresce junto", desc: "Comunidade ativa de empreendedores, com troca de experiências e benchmarks reais." },
+              { icon: "💼", title: "Sem funcionários", desc: "Você pode operar sozinho, ampliando sua margem de lucro." },
+              { icon: "🏠", title: "Sem aluguel", desc: "Não precisa de ponto comercial. Modelo home-based, você faz a gestão da sua casa." },
             ].map((item, i) => (
               <div
                 key={i}
@@ -408,10 +408,6 @@ export default function Home() {
                 alt="Equipamento Lembre-Lembre em cerimônia de casamento"
                 className="w-full rounded-[20px] object-cover aspect-3/4 block shadow-[0_20px_56px_rgba(0,0,0,.1)]"
               />
-              <div className="absolute -bottom-5 -right-5 bg-accent text-white rounded-[16px] px-6 py-5 text-center shadow-[0_12px_32px_rgba(201,145,58,.35)]">
-                <div className="font-heading text-[1.9rem] font-bold">12+</div>
-                <div className="text-[.72rem] opacity-85 mt-0.5">anos de mercado</div>
-              </div>
             </div>
             <div>
               <span className="text-[.72rem] font-bold tracking-[.12em] uppercase text-accent mb-3.5 block">
@@ -427,16 +423,9 @@ export default function Home() {
               </p>
               <p className="text-[.95rem] text-muted leading-[1.8] mb-4">
                 O que começou como um projeto local virou a maior rede de foto-lembrança do Brasil. Já somos
-                mais de 60 franqueados espalhados em território nacional e fora dele também, com unidades na
+                mais de 70 franqueados espalhados em território nacional e fora dele também, com unidades na
                 Europa e África provando a resiliência do modelo de negócio.
               </p>
-              <div className="flex gap-2 flex-wrap mt-6">
-                {["Fundada em 2013", "Franquia desde 2019", "Portugal desde 2022", "63 unidades", "Modelo validado"].map((tag) => (
-                  <span key={tag} className="bg-accent-light text-accent-dark text-[.75rem] font-semibold px-3.5 py-1.5 rounded-[20px]">
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -496,7 +485,7 @@ export default function Home() {
               },
               {
                 q: "Qual o prazo médio para retorno do investimento?",
-                a: "O prazo médio da rede é inferior a 12 meses. Com o faturamento médio anual que pode chegar a mais de R$400.000 e margem de até 80% por evento, o retorno é rápido em comparação a outros modelos de franquia.",
+                a: "O prazo médio da rede é inferior a 12 meses. Com o faturamento médio anual que pode chegar a mais de R$400.000 e margem de até 70% por evento, o retorno é rápido em comparação a outros modelos de franquia.",
               },
               {
                 q: "Em que dias da semana eu trabalho?",
