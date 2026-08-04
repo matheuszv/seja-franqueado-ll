@@ -56,6 +56,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value.trim(),
       email: (form.elements.namedItem("email") as HTMLInputElement).value.trim(),
       city: (form.elements.namedItem("city") as HTMLInputElement).value.trim(),
+      profession: (form.elements.namedItem("profession") as HTMLInputElement).value.trim(),
       capital: (form.elements.namedItem("capital") as HTMLSelectElement).value,
       msg: (form.elements.namedItem("msg") as HTMLTextAreaElement).value.trim(),
       event_id: eventId,
@@ -164,6 +165,20 @@ export default function LeadForm({ formId }: LeadFormProps) {
           type="text"
           name="city"
           placeholder="João Pessoa, PB"
+          required
+          disabled={isLoading}
+          className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-body disabled:opacity-50"
+        />
+      </div>
+
+      <div className="flex flex-col gap-[7px]">
+        <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
+          Profissão
+        </label>
+        <input
+          type="text"
+          name="profession"
+          placeholder="Ex: Advogado, Autônomo, Aposentado..."
           required
           disabled={isLoading}
           className="bg-white/7 border border-white/10 rounded-lg px-4 py-[13px] text-[.9rem] text-white placeholder:text-white/30 outline-none focus:border-accent focus:bg-white/10 transition-all font-body disabled:opacity-50"

@@ -73,6 +73,7 @@ async function sendToConversionsApi(req: NextRequest, body: Record<string, strin
         custom_data: {
           content_name: "Formulario Franquia LP",
           situacao_investimento: body.capital ?? undefined,
+          profissao: body.profession ?? undefined,
         },
       },
     ],
@@ -98,9 +99,9 @@ async function sendToConversionsApi(req: NextRequest, body: Record<string, strin
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { name, phone, email, city, capital, msg } = body as Record<string, string>;
+  const { name, phone, email, city, profession, capital, msg } = body as Record<string, string>;
 
-  if (!name?.trim() || !phone?.trim() || !email?.trim() || !city?.trim() || !capital?.trim()) {
+  if (!name?.trim() || !phone?.trim() || !email?.trim() || !city?.trim() || !profession?.trim() || !capital?.trim()) {
     return NextResponse.json(
       { error: "Preencha todos os campos obrigatórios." },
       { status: 400 }
@@ -142,6 +143,7 @@ export async function POST(req: NextRequest) {
             <tr><td style="padding:8px 0;color:#6b6560;font-size:.85rem;">WhatsApp</td><td style="padding:8px 0;font-weight:600;">${phone.trim()}</td></tr>
             <tr><td style="padding:8px 0;color:#6b6560;font-size:.85rem;">E-mail</td><td style="padding:8px 0;font-weight:600;">${email.trim()}</td></tr>
             <tr><td style="padding:8px 0;color:#6b6560;font-size:.85rem;">Cidade / Estado</td><td style="padding:8px 0;font-weight:600;">${city.trim()}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b6560;font-size:.85rem;">Profissão</td><td style="padding:8px 0;font-weight:600;">${profession.trim()}</td></tr>
             <tr><td style="padding:8px 0;color:#6b6560;font-size:.85rem;">Capital</td><td style="padding:8px 0;font-weight:600;">${capitalLabels[capital] ?? capital}</td></tr>
             ${msg?.trim() ? `<tr><td style="padding:8px 0;color:#6b6560;font-size:.85rem;vertical-align:top;">Mensagem</td><td style="padding:8px 0;">${msg.trim()}</td></tr>` : ""}
           </table>
