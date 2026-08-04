@@ -158,7 +158,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
 
       <div className="flex flex-col gap-[7px]">
         <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
-          Cidade / Estado
+          Cidade de Interesse/Estado
         </label>
         <input
           type="text"
