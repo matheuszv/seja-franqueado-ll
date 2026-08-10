@@ -109,8 +109,8 @@ export default function Home() {
             <div className="mt-8 bg-[rgba(201,145,58,.12)] border border-[rgba(201,145,58,.3)] rounded-xl px-7 py-5 inline-flex items-center gap-4 max-[600px]:flex-col max-[600px]:gap-2">
               <div className="font-heading text-[2rem] font-bold text-[#e8b86d]">R$ 51.950</div>
               <div className="text-[.82rem] text-white/60 leading-normal">
-                Investimento inicial completo<br />
-                <span className="text-white/40">Inclui estrutura completa, equipamentos, capital de giro, treinamento e suporte</span>
+                Previsão de investimento total<br />
+                <span className="text-white/40">Aporte inicial mínimo R$25 mil</span>
               </div>
             </div>
           </div>
@@ -280,7 +280,7 @@ export default function Home() {
                   className="w-16 h-auto object-contain shrink-0"
                 />
                 <p className="text-[.85rem] text-white/60 leading-[1.7]">
-                  Recebemos o selo 4 estrelas de Melhores Franquias, do ranking da Pequenas Empresas &amp; Grandes Negócios — um reconhecimento dado pelos próprios franqueados, que avaliam suporte, rentabilidade e solidez da rede.
+                  Recebemos o selo de Melhores Franquias, do ranking da Pequenas Empresas &amp; Grandes Negócios — um reconhecimento dado pelos próprios franqueados, que avaliam suporte, rentabilidade e solidez da rede.
                 </p>
               </div>
               <div className="flex items-start gap-5">
