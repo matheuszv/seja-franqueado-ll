@@ -106,11 +106,15 @@ export default function Home() {
             </div>
 
             {/* Investment card */}
-            <div className="mt-8 bg-[rgba(201,145,58,.12)] border border-[rgba(201,145,58,.3)] rounded-xl px-7 py-5 inline-flex items-center gap-4 max-[600px]:flex-col max-[600px]:gap-2">
-              <div className="font-heading text-[2rem] font-bold text-[#e8b86d]">R$ 51.950</div>
-              <div className="text-[.82rem] text-white/60 leading-normal">
-                Previsão de investimento total<br />
-                <span className="text-white/40">Aporte inicial mínimo R$25 mil</span>
+            <div className="mt-8 bg-[rgba(201,145,58,.12)] border border-[rgba(201,145,58,.3)] rounded-xl px-7 py-5 inline-flex items-center gap-7 max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-4">
+              <div>
+                <div className="font-heading text-[1.6rem] font-bold text-[#e8b86d] whitespace-nowrap">R$ 25 mil</div>
+                <div className="text-[.78rem] text-white/60 mt-0.5">Aporte inicial mínimo</div>
+              </div>
+              <div className="w-px h-10 bg-white/15 max-[600px]:hidden" />
+              <div>
+                <div className="font-heading text-[1.6rem] font-bold text-[#e8b86d] whitespace-nowrap">R$ 51.950</div>
+                <div className="text-[.78rem] text-white/60 mt-0.5">Investimento total</div>
               </div>
             </div>
           </div>
