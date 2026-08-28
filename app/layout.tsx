@@ -23,7 +23,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Seja um Franqueado — Lembre-Lembre",
   description:
-    "Faça parte da maior rede de franquias de foto instantânea do Brasil. Mais de 68 franquias ativas, R$6,9M faturados. Investimento inicial a partir de R$ 51.950.",
+    "Faça parte da maior rede de franquias de foto instantânea do Brasil. Mais de 68 franquias ativas, R$6,9M faturados. Investimento total a partir de R$ 56.900.",
 };
 
 export default function RootLayout({
