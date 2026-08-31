@@ -8,8 +8,7 @@ import crypto from "crypto";
 
 const capitalLabels: Record<string, string> = {
   tem_total: "Já tem o valor total disponível",
-  tem_metade: "Tem aproximadamente a metade (R$ ~25.000)",
-  financiamento: "Precisa de financiamento / parcelamento",
+  tem_aporte: "Tem o aporte inicial disponível (R$ 27.000,00)",
   sem_capital: "Ainda não tem o valor no momento",
 };
 

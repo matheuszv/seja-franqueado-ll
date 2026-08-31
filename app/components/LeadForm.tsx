@@ -187,7 +187,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
 
       <div className="sm:col-span-2 flex flex-col gap-[7px]">
         <label className="sm:text-[.78rem] font-semibold text-white/55 uppercase tracking-[.07em] text-[.7rem]">
-          Sua situação em relação ao investimento de R$ 51.950
+          Sua situação em relação ao investimento de R$ 56.900
         </label>
         <select
           name="capital"
@@ -197,8 +197,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
         >
           <option value="">Selecione...</option>
           <option value="tem_total">Já tenho o valor total disponível</option>
-          <option value="tem_metade">Tenho aproximadamente a metade (R$ ~25.000)</option>
-          <option value="financiamento">Preciso de financiamento / parcelamento</option>
+          <option value="tem_aporte">Tenho o aporte inicial disponível (R$ 27.000,00)</option>
           <option value="sem_capital">Ainda não tenho o valor no momento</option>
         </select>
       </div>

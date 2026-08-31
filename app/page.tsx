@@ -108,12 +108,12 @@ export default function Home() {
             {/* Investment card */}
             <div className="mt-8 bg-[rgba(201,145,58,.12)] border border-[rgba(201,145,58,.3)] rounded-xl px-7 py-5 inline-flex items-center gap-7 max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-4">
               <div>
-                <div className="font-heading text-[1.6rem] font-bold text-[#e8b86d] whitespace-nowrap">R$ 25 mil</div>
+                <div className="font-heading text-[1.6rem] font-bold text-[#e8b86d] whitespace-nowrap">R$ 27 mil</div>
                 <div className="text-[.78rem] text-white/60 mt-0.5">Aporte inicial mínimo</div>
               </div>
               <div className="w-px h-10 bg-white/15 max-[600px]:hidden" />
               <div>
-                <div className="font-heading text-[1.6rem] font-bold text-[#e8b86d] whitespace-nowrap">R$ 51.950</div>
+                <div className="font-heading text-[1.6rem] font-bold text-[#e8b86d] whitespace-nowrap">R$ 56.900</div>
                 <div className="text-[.78rem] text-white/60 mt-0.5">Investimento total</div>
               </div>
             </div>
@@ -235,7 +235,7 @@ export default function Home() {
             {[
               { value: "68", label: "Franquias ativas ao redor do mundo" },
               { value: "R$6,9M", label: "Faturamento da rede em 2025" },
-              { value: "70%", label: "Margem de lucro por evento realizado" },
+              { value: "até 70%", label: "Margem de lucro por evento realizado" },
               { value: "12", label: "Meses em média para recuperar o investimento" },
             ].map((item, i) => (
               <div key={i} className="bg-white px-8 py-10 flex flex-col items-center text-center">
