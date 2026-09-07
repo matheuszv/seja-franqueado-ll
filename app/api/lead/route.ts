@@ -12,6 +12,38 @@ const capitalLabels: Record<string, string> = {
   sem_capital: "Ainda não tem o valor no momento",
 };
 
+async function validateCaptcha(token: string) {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+
+  if (!secret) {
+    console.error("RECAPTCHA_SECRET_KEY não configurada.");
+    return false;
+  }
+
+  const response = await fetch(
+    "https://www.google.com/recaptcha/api/siteverify",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        secret,
+        response: token,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    console.error("Erro ao consultar API do reCAPTCHA.");
+    return false;
+  }
+
+  const result = await response.json();
+
+  return result.success === true;
+}
+
 // --- Normalização + hash SHA-256 (exigência da Meta para user_data) ---
 const sha256 = (v: string) => crypto.createHash("sha256").update(v).digest("hex");
 
@@ -98,7 +130,32 @@ async function sendToConversionsApi(req: NextRequest, body: Record<string, strin
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { name, phone, email, city, profession, capital, msg } = body as Record<string, string>;
+  const {
+  name,
+  phone,
+  email,
+  city,
+  profession,
+  capital,
+  msg,
+  captchaToken,
+} = body as Record<string, string>;
+
+if (!captchaToken) {
+  return NextResponse.json(
+    { error: "CAPTCHA obrigatório." },
+    { status: 400 }
+  );
+}
+
+const captchaValid = await validateCaptcha(captchaToken);
+
+  if (!captchaValid) {
+    return NextResponse.json(
+      { error: "Falha na validação do CAPTCHA." },
+      { status: 400 }
+    );
+  }
 
   if (!name?.trim() || !phone?.trim() || !email?.trim() || !city?.trim() || !profession?.trim() || !capital?.trim()) {
     return NextResponse.json(

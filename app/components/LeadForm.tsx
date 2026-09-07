@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import RecaptchaModal from "./RecaptchaModal";
 
 declare global {
   interface Window {
@@ -37,6 +38,23 @@ interface LeadFormProps {
 
 export default function LeadForm({ formId }: LeadFormProps) {
   const [state, setState] = useState<FormState>({ status: "idle" });
+  const [isModalCaptchaOpen, setIsModalCaptchaOpen] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+    useEffect(() => {
+    if (isModalCaptchaOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isModalCaptchaOpen]);
+  
 
   function handleFormStart() {
     if (formStartFired) return;
@@ -61,6 +79,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
       msg: (form.elements.namedItem("msg") as HTMLTextAreaElement).value.trim(),
       event_id: eventId,
       page_url: window.location.href,
+      captchaToken,
     };
 
     try {
@@ -71,6 +90,9 @@ export default function LeadForm({ formId }: LeadFormProps) {
       });
 
       const json = await res.json();
+
+      setIsModalCaptchaOpen(false);
+      setIsLoading(false);
 
       if (!res.ok) {
         setState({ status: "error", message: json.error ?? "Erro ao enviar. Tente novamente." });
@@ -100,13 +122,15 @@ export default function LeadForm({ formId }: LeadFormProps) {
     );
   }
 
-  const isLoading = state.status === "loading";
-
   return (
     <form
       id={formId}
       onSubmit={handleSubmit}
       onFocus={handleFormStart}
+      onInput={(e) => {
+        setIsFormValid(e.currentTarget.checkValidity());
+      }}
+      autoComplete="off"
       className="grid grid-cols-1 sm:grid-cols-2 gap-4"
     >
       {state.status === "error" && state.message && (
@@ -217,8 +241,10 @@ export default function LeadForm({ formId }: LeadFormProps) {
 
       <div className="sm:col-span-2">
         <button
-          type="submit"
-          disabled={isLoading}
+          type="button"
+          onClick={() => setIsModalCaptchaOpen(true)}
+          disabled={isLoading || !isFormValid}
+          title={isFormValid ? "" : "Preencha todos os campos obrigatórios para prosseguir e verifique se seu email está correto."}
           className="mt-6 w-full bg-accent text-white rounded-[10px] py-[18px] text-base font-semibold cursor-pointer transition-all hover:bg-accent-dark hover:-translate-y-0.5 font-body disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
         >
           {isLoading ? "Enviando..." : "Dê o primeiro passo →"}
@@ -227,6 +253,18 @@ export default function LeadForm({ formId }: LeadFormProps) {
           Seus dados são protegidos e nunca serão compartilhados com terceiros.
         </p>
       </div>
+
+      {isModalCaptchaOpen && (
+        <RecaptchaModal
+          formId={formId} 
+          setIsModalCaptchaOpen={setIsModalCaptchaOpen}
+          setIsLoading={setIsLoading}
+          setCaptchaToken={setCaptchaToken} 
+          captchaToken={captchaToken}
+          isLoading={isLoading}
+          handleSubmit={handleSubmit}
+        />
+      )}
     </form>
   );
 }
