@@ -209,6 +209,8 @@ const captchaValid = await validateCaptcha(captchaToken);
 
     await sendToConversionsApi(req, body as Record<string, string>);
 
+    console.log(`Lead enviado: ${name.trim()} — ${city.trim()}`);
+
     return NextResponse.json({ success: true, name: name.trim() });
   } catch (err) {
     console.error("Erro ao enviar e-mail:", err);

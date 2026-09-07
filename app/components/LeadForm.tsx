@@ -64,7 +64,7 @@ export default function LeadForm({ formId }: LeadFormProps) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setState({ status: "loading" });
+    setIsLoading(true);
 
     const form = e.currentTarget;
     // Gerado antes do envio: é a chave de deduplicação entre o Pixel (browser) e a CAPI (servidor).
@@ -81,6 +81,8 @@ export default function LeadForm({ formId }: LeadFormProps) {
       page_url: window.location.href,
       captchaToken,
     };
+
+    console.log("passou aqui")
 
     try {
       const res = await fetch("/api/lead", {

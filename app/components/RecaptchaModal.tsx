@@ -19,6 +19,7 @@ export default function RecaptchaModal({
   captchaToken,
   formId,
   isLoading,
+  handleSubmit,
   setIsLoading
 }: RecaptchaProps) {
   return (
@@ -58,7 +59,6 @@ export default function RecaptchaModal({
         <button
           type="submit"
           form={formId}
-          onClick={() => setIsLoading(true)}
           disabled={!captchaToken || isLoading}
           className="mt-5 w-full bg-accent text-white rounded-[10px] py-[15px] text-base font-semibold cursor-pointer transition-all hover:bg-accent-dark hover:-translate-y-0.5 font-body disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0"
         >
